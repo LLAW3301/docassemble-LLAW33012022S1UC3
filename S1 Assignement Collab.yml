@@ -69,17 +69,11 @@ fields:
     datatype: radio
     choices: 
     - SA
-  
     - VIC
-   
     - NSW
-   
     - ACT
-   
     - NT
-   
     - WA
-   
     - Tasmania
 ---
 
