@@ -1,0 +1,27 @@
+---
+#code question for Type of Assistance
+question: Type of Assistance
+fields:
+  - Are you seeking assistance with a matter relating to an NDIS access request, or review: NDIS_assistance
+    datatype: radio
+    choices:
+      - Yes
+      - No
+---
+#code question for Whos is filling application
+question: Who is filling in the application
+fields:
+  - Are you filling in this form on behalf of someone else: who_is_filing
+    datatype: radio
+    choices:
+      - Yes
+      - No
+  - Do you have their consent: applicant_concent
+    datatype: radio
+    choices:
+    - Yes
+    - No
+    show if: 
+      variable: who_is_filing
+      is: 'Yes'
+---

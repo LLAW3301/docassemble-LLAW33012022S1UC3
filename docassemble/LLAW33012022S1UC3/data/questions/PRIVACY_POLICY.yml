@@ -1,0 +1,16 @@
+---
+# code question for Privacy Policy
+question: Privacy Policy
+subquestion: |
+  Welcome to the Uniting Communities application for assistance in relation to NDIS access requests. 
+  
+  ##Privacy Policy##
+  
+# Insert privacy policy here with refrence to Privacy Act here
+
+  *You must agree to the above terms in order to continue.*
+
+buttons:
+  - 'Agree' : continue
+  - 'Exit' : Exit
+    url: https://www.unitingcommunities.org/
