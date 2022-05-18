@@ -1,0 +1,96 @@
+---
+# Docassemble code for S1 Assignment
+question: Applicant Information
+  ${ x.ask_name_template.subject }
+subquestion: |
+  ${ x.ask_name_template.content }
+fields:
+  - Salutation: Mr Mrs Miss Ms Sir Madam
+  - First name: x.name.first
+    required: x.first_name_required
+    show if:
+      code: x.name.uses_parts
+    default: ${ x.name.default_first }
+  - Middle name: x.name.middle
+    required: x.middle_name_required
+    show if:
+      code: x.name.uses_parts and x.ask_middle_name
+    default: ${ x.name.default_middle }
+  - Last name: x.name.last
+    required: x.last_name_required
+    show if:
+      code: x.name.uses_parts
+    default: ${ x.name.default_last }
+  - Date of Birth:
+  - State of Residence: address_state
+    datatype: radio
+    choices: 
+    - South Australia
+    - Victoria
+    - New South Wales
+    - Western Australia
+    - Tasmania
+    - Australian Capital Territory
+    - Northern Territory
+---
+question: Personal Information
+subquestion: |
+  Are you of Aboriginal or Torres Strait Islander origin?
+fields:
+  - yesno: user_is_aboriginaltorres
+
+---
+
+question: Personal Information
+subquestion: |
+  Country of Birth
+fields:
+  - datatype: text
+  
+---
+
+question: Personal Information
+subquestion: |
+  Is English your first language?
+fields:
+  - yesno: user_speaks_english
+
+---
+
+question: Personal Information
+subquestion: |
+  What is your first language?
+fields:
+  - datatype: text
+
+---
+
+question: Personal Information
+subquestion: |
+  Do you require an interpreter?
+fields: 
+  - yesno: user_requires_interpreter
+
+---
+
+question: Personal Information
+subquestion: |
+  What is your primary disability?
+fields:
+   - datatype: text
+
+---
+
+question: Personal Information
+subquestion: |
+  What sort of support do you need?
+fields:
+  - datatype: text
+
+---
+
+question: Personal Information
+subquestion: |
+  How did you hear about us?
+fields:
+  - datatype: text
