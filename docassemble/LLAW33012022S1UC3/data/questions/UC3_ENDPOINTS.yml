@@ -34,23 +34,25 @@ code: |
 event: endpoint['other_resources']
 question: Other Resources
 subquestion: |
+
   You have indicated that you are seeking aid with a matter unrelated to an NDIS access request or review of an NDIS access request. As such, Uniting Communities will not be able to provide you with assistance at this time. 
   
-  Please find below and list of other resources or organisations that may be able to help you:
+  Please find below a list of other resources or organisations that may be able to help you:
   
 # List alternative resources/organisations here
 
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
+  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
 buttons:
   - Restart: restart
   - Exit: exit
-    url: https://www.unitingcommunities.org/service/disability/supportcoordination
+    url: https://www.unitingcommunities.org
 ---
 # Endpoint 'ineligible'
 # User will be directed here if they are not between 18-65 and if they live outside of South Australia
 event: endpoint['ineligible']
 question: You are not eligible
 subquestion: |
+
   It would appear you are not eligible to receive assistance from Uniting Communities at this time. This is because 
   % if applicant_age < 18 and state_of_residence == 'South Australia':
   you are under 18 years of age.
@@ -64,7 +66,7 @@ subquestion: |
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia.
   % endif
   
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
+  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
 buttons:
   - Restart: restart
   - Exit: exit
