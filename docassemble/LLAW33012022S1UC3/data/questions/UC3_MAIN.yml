@@ -25,7 +25,9 @@ subquestion: |
   --------|--------
   Do you need assistance with a matter relating to an NDIS access request or review of an NDIS access request?            | ${ NDIS_assistance }
   Are you filling in this application on behalf of someone else?            | ${ who_is_filing }
+  % if who_is_filing == 'Yes':
   Do you have that person's concent?             | ${ applicant_concent }
+  % endif
   Name    | ${ applicant_salutation } ${ applicant }
   Age                | ${ applicant_age }
   Date of Birth  | ${ date_of_birth }
