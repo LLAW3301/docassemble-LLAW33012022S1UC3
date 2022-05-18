@@ -17,10 +17,10 @@ code: |
 # Age needs to be between 18-65 and they must be a resident of South Australia
 mandatory: True
 code: |
-  if applicant_age_ok and state_of_residence == 'South Australia':
-    endpoint['eligible']
-  else:
+  if applicant_age_ok == False or state_of_residence != 'South Australia':
     endpoint['ineligible']
+  else:
+    endpoint['eligible']
 ---
 # This code block determines applicant_age_ok
 code: |
