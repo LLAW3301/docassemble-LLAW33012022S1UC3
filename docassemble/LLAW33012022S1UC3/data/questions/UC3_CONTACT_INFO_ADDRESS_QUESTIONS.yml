@@ -41,6 +41,7 @@ fields:
       variable: currently_homeless
       is: 'No'
   - Unit: address.unit
+    datatype: integer
     required: False
     show if:
       variable: currently_homeless
@@ -64,6 +65,7 @@ fields:
       variable: currently_homeless
       is: 'No'
   - Postal Code: address.postal_code
+    datatype: integer
     required: False
     show if:
       variable: currently_homeless
@@ -83,6 +85,7 @@ fields:
       variable: also_postal_address
       is: 'No'
   - Unit: postaddress.unit
+    datatype: integer
     required: False
     show if:
       variable: also_postal_address
@@ -106,6 +109,7 @@ fields:
       variable: also_postal_address
       is: 'No'
   - Postal Code: postaddress.postal_code
+    datatype: integer
     required: False
     show if:
       variable: also_postal_address
