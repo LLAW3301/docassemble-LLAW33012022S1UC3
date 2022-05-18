@@ -3,10 +3,12 @@
 question: Contact Phone Number
 subquestion: |
   Please Kindly enter your contact Phone number (that is reachable during business hours).
+# fields function sets out a variable, called phone_number, which is an integer input only. 
 fields: 
   - Phone Number: phone_number
     datatype: integer
 ---
+# Here the Field function sets out applicant_email as a variable, which has input that of an email only, (something@something.something)  
 question: Contact Email
 subquestion: |
   Please Kindly enter your contact email
@@ -14,6 +16,7 @@ fields:
   - Email: applicant_email
     datatype: email
 ---
+# With no datatype set up docassemble automatically sets the datatype to text, trying to set datatype to text will create error, as will be kinda  considered as a duplicaete datatype
 question: Address Line 1
 subquestion: |
   Please Kindly enter your  Address Line 1 (Street number or Unit number, and street number)
@@ -30,6 +33,7 @@ fields:
 question: State 
 subquestion: |
   Please Kindly enter your Residency State 
+  # here the datatype radio creates an input of only a selected choices, which are listed below. 
 fields: 
   - State: address_state
     datatype: radio
@@ -98,7 +102,7 @@ fields:
     - Business Owner
     - Dividend/Investment earnings
 ---
-
+# By putting a mandatory block here, we are forcing docassemble to run this code.
 mandatory: True
 question: Please Confirm the details 
 subquestion: |
