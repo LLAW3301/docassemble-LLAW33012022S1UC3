@@ -7,7 +7,7 @@ fields:
   - Phone Number: phone_number
     datatype: integer
     help: Please enter phone number without any spaces.
-  - Email: applicant_email
+  - Email: applicant.email
     datatype: email
     hint: example@gmail.com
 ---
