@@ -3,7 +3,7 @@
 include:
   - PRIVACY_POLICY.yml
   - TYPE_OF_ASS_AND_WHOS_FILLING.yml
-  - UC3__CONTACT_INFO_ADDRESS_QUESTIONS.yml
+  - UC3_CONTACT_INFO_ADDRESS_QUESTIONS.yml
   - UC3_PERSONAL INFORMATION_QUESTIONS.yml
   - UC3_UPLOAD_DOCUMENT_QUESTIONS.yml
   - UC3_ENDPOINTS.yml
@@ -25,14 +25,17 @@ subquestion: |
   Do you need assistance with a matter relating to an NDIS access request or review of an NDIS access request?            | ${ NDIS_assistance }
   Are you filling in this application on behalf of someone else?            | ${ who_is_filing }
   Do you have that person's concent?             | ${ applicant_concent }
-  Name  | ${ applicant }
+  Name    | ${ applicant_salutation } ${ applicant }
   Age                | ${ applicant_age }
-  Date of Birth | ${ date_of_birth }
+  Date of Birth  | ${ date_of_birth }
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }
   Is english your first language?   | ${ english_first_language }
+  % if english_first_language == 'No':
+  What is your first language?   | ${ first_language }
   Do you require an interpretor?   | ${ interpretor_required }
+  % endif
   What is your primary disability?   | ${ primary_disability }
   What sort of assistance do you need?   | ${ type_of_assistance }
   How did you hear about us?   | ${ how_did_you_hear }
@@ -64,7 +67,4 @@ subquestion: |
   **Please click on the 'Email to Uniting Communities' Button below before exiting. 
   
   You can also email yourself a copy of the information you have entered by clicking on the 'Email to Myself' button next to it.**
-buttons:
-  - 'Restart': restart
-  - 'Exit': exit
 ---

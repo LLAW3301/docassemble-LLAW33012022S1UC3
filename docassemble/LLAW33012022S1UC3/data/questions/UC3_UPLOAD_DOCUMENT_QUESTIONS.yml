@@ -1,4 +1,5 @@
 ---
+# Question block for uploading/downloading letter of consent
 question: Upload Letter of Consent 
 subquestion:  |
   Please upload a completed **Letter of Consent to Share Information**. PDF and image files accepted. 
@@ -20,28 +21,21 @@ action buttons:
     color: warning
     icon: sign-out-alt 
 ---
+# Question block for internal review details
+# Includes legislation
 question: Internal Review Details
-subquestion: |
-  What date did you receive your access request decision?
 fields:
-  - Date: date_recieved_access_request 
+  - What date did you receive your access request decision?: date_recieved_access_request 
     datatype: date
     max: ${ today() }
----
-question: Internal Review Details
-subquestion: |
-  What date did you receive funding for your plan?
-fields:
-  - Date: date_recieved_funding 
+    required: False
+  - What date did you receive funding for your plan: date_recieved_funding 
     datatype: date
     max: ${ today() }
----
-question: Internal Review Details
-subquestion: |
-  What is the reason for rejection?
-fields:
-  - Reason: rejection_reason_access_request
+    required: False
+  - What is the reason for rejection?: rejection_reason_access_request
     input type: area
+    required: False
 under: | 
   Section 100 of the NDIS Act enstablishes that the decision-maker of a reviewable decision must give written notice of the reviewable decision, and of the reasons for the reviewable decision, to each person directly affected by the reviewable decision.
   
@@ -51,6 +45,7 @@ under: |
   
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
 ---
+# Question block for external review details
 question: External Review Details
 subquestion:  |
   What date did you receive an internal review report?
@@ -58,13 +53,10 @@ fields:
   - Date: date_revieced_internal_review_report
     datatype: date
     max: ${ today() }
----
-question: External Review Details
-subquestion:  |
-  What is the reason for rejection?
-fields:
-  - Reason: rejection_reason_internal_review
+    required: False
+  - What is the reason for rejection?: rejection_reason_internal_review
     input type: area
+    required: False
 ---
 question: External Review Details
 subquestion:  |
@@ -73,6 +65,7 @@ fields:
   - Date: date_AAT_application 
     datatype: date
     max: ${ today() } 
+    required: False
 ---
 question: AAT Document Upload
 subquestion:  |

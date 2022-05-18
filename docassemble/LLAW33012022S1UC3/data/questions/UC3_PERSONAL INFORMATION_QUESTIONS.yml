@@ -1,26 +1,9 @@
 ---
-mandatory: True
-question: |
-  Question|Your Response
-  --------|--------
-  Name    | ${ applicant_salutation } ${ applicant }
-  Age                | ${ applicant_age }
-  Date of Birth  | ${ date_of_birth }
-  State of residence | ${ state_of_residence } 
-  Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
-  County of birth   | ${ country_of_birth }
-  Is english your first language?   | ${ english_first_language }
-  % if english_first_language == 'No':
-  What is your first language?   | ${ first_language }
-  Do you require an interpretor?   | ${ interpretor_required }
-  % endif
-  What is your primary disability?   | ${ primary_disability }
-  What sort of assistance do you need?   | ${ type_of_assistance }
-  How did you hear about us?   | ${ how_did_you_hear }
----
+# Object block that defines applicant
 objects:
   - applicant: Individual
 ---
+# Question block for applicant information
 question: Applicant Information
 fields:
   - Salutation: applicant_salutation
@@ -49,6 +32,7 @@ fields:
     - Australian Capital Territory
     - Northern Territory
 ---
+# Question block for personal information
 question: Personal Information
 fields:
   - Are you of Aboriginal or Torres Strait Islander origin: ATSI_background
@@ -75,6 +59,7 @@ fields:
       variable: english_first_language
       is: 'No'
 ---
+# Question block for personal information
 question: Personal Information
 fields:
    - What is your primary disability: primary_disability
@@ -85,8 +70,10 @@ fields:
        - External review of an access request (through the AAT)
        - Other
 ---
+# Question block asking how the use heard about uniting communities
 question: How did you hear about Uniting Communities?
 fields:
   - Please let us know how you heard about us: how_did_you_hear
     datatype: text
+    required: False
 ---
