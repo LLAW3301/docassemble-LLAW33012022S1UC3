@@ -1,5 +1,5 @@
 ---
-#code question for Type of Assistance
+# Question block for Type of Assistance
 question: Type of Assistance
 fields:
   - Are you seeking assistance with a matter relating to an NDIS access request, or review: NDIS_assistance
@@ -8,7 +8,7 @@ fields:
       - Yes
       - No
 ---
-#code question for Whos is filling application
+#Question block for Whos is filling application
 question: Who is filling in the application
 fields:
   - Are you filling in this form on behalf of someone else: who_is_filing
