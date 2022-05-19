@@ -1,43 +1,22 @@
 # The welcome screen/privacy policy and endpoints
 ---
+# Objects block for setting endpoints
 objects:
   - endpoint: DADict
 ---
-# The welcome screen with the privacy policy
-# User can choose to exit here if they do not wish to accpet the privacy policy
-# If they exit they will return to the Uniting Communities website
-mandatory: True
-question: Welcome
-subquestion: |
-  Welcome to the Uniting Communities application for assistance in relation to NDIS access requests. 
-  
-  ##Privacy Policy##
-  
-# Insert privacy policy here with refrence to Privacy Act here
-
-  *You must agree to the above terms in order to continue.*
-buttons:
-  - "I have accept and want to continue": continue
-  - " I do not accept": exit 
-    url: https://www.unitingcommunities.org/service/disability/supportcoordination
----
 # Code block that determines intial eligibility based on what user needs assistance with
 # Uniting Communities only able to provide assistance with matters regarding NDIS access request or review of an NDIS access request
-mandatory: True
-code: |
-  if NDIS_assistance == 'Yes':
-    endpoint['eligible']
-  else:
-    endpoint['other_resources']
----
 # Code block that sets conditions for inticial eligibity 
 # Age needs to be between 18-65 and they must be a resident of South Australia
 mandatory: True
 code: |
-  if applicant_age_ok and state_of_residence == 'South Australia':
-    endpoint['eligible']
+  if NDIS_assistance == 'Yes':
+    if applicant_age_ok and state_of_residence == 'South Australia':
+      eligible
+    else:
+      ineligible
   else:
-    endpoint['ineligible']
+     other_resources
 ---
 # This code block determines applicant_age_ok
 code: |
@@ -48,26 +27,28 @@ code: |
 ---
 # Endpoint 'other resources'
 # User will be directed here if they are seeking assistance with a matter unrelated to an NDIS access request/review
-event: endpoint['other_resources']
+event: other_resources
 question: Other Resources
 subquestion: |
+
   You have indicated that you are seeking aid with a matter unrelated to an NDIS access request or review of an NDIS access request. As such, Uniting Communities will not be able to provide you with assistance at this time. 
   
-  Please find below and list of other resources or organisations that may be able to help you:
+  Please find below a list of other resources or organisations that may be able to help you:
   
-# List alternative resources/organisations here
+  ###List of Alternative Resources/Organisations###
 
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
+  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
 buttons:
   - Restart: restart
   - Exit: exit
-    url: https://www.unitingcommunities.org/service/disability/supportcoordination
+    url: https://www.unitingcommunities.org
 ---
 # Endpoint 'ineligible'
 # User will be directed here if they are not between 18-65 and if they live outside of South Australia
-event: endpoint['ineligible']
+event: ineligible
 question: You are not eligible
 subquestion: |
+
   It would appear you are not eligible to receive assistance from Uniting Communities at this time. This is because 
   % if applicant_age < 18 and state_of_residence == 'South Australia':
   you are under 18 years of age.
@@ -81,7 +62,7 @@ subquestion: |
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia.
   % endif
   
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
+  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
 buttons:
   - Restart: restart
   - Exit: exit
@@ -91,7 +72,7 @@ buttons:
 # User will be directed to this endpoint if they are seeking assistance with an NDIS access request/review, are between 18-65 and are a resident of SA
 # This is where the final table of answers will be displayed and the list of documents uploaded and those still needing to be uploaded will be shown
 # Where the buttons that allow the information collected to be emailed to the user and UC are
-event: endpoint['eligible']
+event: eligible
 question: Thank you for completing the application
 subquestion: |
   Based on your responses, Uniting Communitites may be able to provide you with assistance in relation to your NDIS ${ type_of_assistance }. 
@@ -101,19 +82,24 @@ subquestion: |
   Question|Your Response
   --------|--------
   Do you need assistance with a matter relating to an NDIS access request or review of an NDIS access request?            | ${ NDIS_assistance }
-  Are you filing in this application on behalf of someone else?            | ${ who_is_filing }
-  Do you have that person's concent?             | ${ applicant_concent }
-  Name  | ${ salutation } ${ first_name } ${ last_name }
+  % if who_is_filing == 'Yes':
+  Are you filling in this application on behalf of someone else?            | ${ who_is_filing }
+  Do you have that person's consent?             | ${ applicant_concent }
+  % endif
+  Name    | ${ applicant_salutation } ${ applicant }
   Age                | ${ applicant_age }
-  Date of Birth | ${ date_of_birth }
+  Date of Birth  | ${ date_of_birth }
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }
   Is english your first language?   | ${ english_first_language }
+  % if english_first_language == 'No':
+  What is your first language?   | ${ first_language }
   Do you require an interpretor?   | ${ interpretor_required }
+  % endif
   What is your primary disability?   | ${ primary_disability }
-  How did you hear about us?   | ${ how_did_you_hear }
   What sort of assistance do you need?   | ${ type_of_assistance }
+  How did you hear about us?   | ${ how_did_you_hear }
   Phone number   | ${ phone_number }
   Email   | ${ applicant_email }
   Are you currently homeless?   | ${ currently_homeless }
@@ -133,23 +119,16 @@ subquestion: |
   What is the reason for rejection?   | ${ rejection_reason_internal_review }
   If you have made an application to the AAT for review, on what date did you do so?   | ${ date_AAT_application }
   
-# Insert 'Restart' button here
+  ###List of documents uploaded###
+  % for AAT_document in AAT_documents:
   
-  ##List of documents uploaded##
+  ${ AAT_document.caption }
   
-# Insert list of documents uploaded here
-
-  ##List of documents that still need to be uploaded##
-  
-# Insert list of documents that still need to be uploaded 
+  % endfor
   
   If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
   
   **Please click on the 'Email to Uniting Communities' Button below before exiting. 
   
   You can also email yourself a copy of the information you have entered by clicking on the 'Email to Myself' button next to it.**
-  
-# Insert 'Email to Uniting Communities' button here
-# Insert 'Email to Myself' button here
-# Insert 'Exit' button here
 ---

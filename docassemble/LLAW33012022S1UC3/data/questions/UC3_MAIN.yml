@@ -1,0 +1,10 @@
+---
+# This block controls what files are inlcuded in the application
+include:
+  - PRIVACY_POLICY.yml
+  - TYPE_OF_ASS_AND_WHOS_FILLING.yml
+  - UC3_CONTACT_INFO_ADDRESS_QUESTIONS.yml
+  - UC3_PERSONAL INFORMATION_QUESTIONS.yml
+  - UC3_UPLOAD_DOCUMENT_QUESTIONS.yml
+  - UC3_ENDPOINTS.yml
+---

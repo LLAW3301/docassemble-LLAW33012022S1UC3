@@ -1,0 +1,138 @@
+---
+mandatory: True
+question: Document Upload
+subquestion:  |
+  Please upload a completed **Letter of Consent to Share Information**. PDF and image files accepted. 
+  
+   If you do not have a copy of either of these forms, you can download a blank copy below. 
+fields:
+  - Upload: letter_of_consent
+    datatype: file
+    accept: |
+      "image/*, .pdf"
+attachments:
+  - name: Letter of Consent to Share Information
+    filename: Letter_of_consent_to_share_information_template
+    content: |
+      Letter of Consent to Share Information 
+action buttons:
+  - label: Upload Later
+    action: next_question
+    color: warning
+    icon: sign-out-alt 
+---
+mandatory: True
+question: Document Upload
+subquestion:  |
+  Please upload a completed **Letter of Authority**. PDF and image files accepted.
+
+  If you do not have a copy of either of these forms, you can download a blank copy below. 
+fields:
+  - Upload: letter_of_authority
+    datatype: file
+    accept: |
+      "image/*, .pdf"
+attachments:
+  - name: Letter of Authority
+    filename: Letter_of_authority_template
+    content: |
+      Letter of Authority
+action buttons:
+  - label: Upload Later
+    action: next_question
+    color: warning
+    icon: sign-out-alt
+---
+mandatory: True
+question: Document Upload
+subquestion:  |
+  If you do not have a copy of either of these forms, you can download a blank copy below
+attachments:
+  - name: Letter of Consent to Share Information
+    filename: Letter_of_consent_to_share_information_template
+    content: |
+      Letter of Consent to Share Information 
+buttons:
+  - Continue: continue 
+---
+mandatory: True
+question: Internal Review Details
+subquestion: |
+  What date did you receive your access request decision?
+fields:
+  - Date: date_recieved_access_request 
+    datatype: date
+    max: ${ today() }
+---
+mandatory: True
+question: Internal Review Details
+subquestion: |
+  What date did you receive funding for your plan?
+fields:
+  - Date: date_recieved_funding 
+    datatype: date
+    max: ${ today() }
+---
+mandatory: True
+question: Internal Review Details
+subquestion: |
+  What is the reason for rejection?
+fields:
+  - Reason: rejection_reason_access_request
+    input type: area
+under: | 
+  Section 100 of the NDIS Act enstablishes that the decision-maker of a reviewable decision must give written notice of the reviewable decision, and of the reasons for the reviewable decision, to each person directly affected by the reviewable decision.
+  
+  Section 34 of the NDIS Act establishes the criteria for what supports are considered "reasonable and necessary" for the NDIS to cover.
+  
+  Section 24 of the NDIS Act establishes the criteria for a person to meet disability requirements.
+  
+  Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
+---
+mandatory: True
+question: External Review Details
+subquestion:  |
+  What date did you receive an internal review report?
+fields:
+  - Date: date_revieced_internal_review_report
+    datatype: date
+    max: ${ today() }
+---
+mandatory: True
+question: External Review Details
+subquestion:  |
+  What is the reason for rejection?
+fields:
+  - Reason: rejection_reason_internal_review
+    input type: area
+---
+mandatory: True
+question: External Review Details
+subquestion:  |
+  If you have made an application to the AAT, on what date did you do so?
+fields:
+  - Date: date_AAT_application 
+    datatype: date
+    max: ${ today() } 
+---
+mandatory: True
+question: AAT Document Upload
+subquestion:  |
+  Please upload any additional documents you have received from the AAT (e.g. directions, listings, or statement of issues.)
+  
+  PDF and image files accepted 
+  
+fields:
+  - Upload: AAT_documents
+    datatype: files
+    accept: |
+      "image/*, .pdf"
+action buttons:
+  - label: Upload Later
+    action: next_question
+    color: warning
+    icon: sign-out-alt 
+---
+  
+  
+
