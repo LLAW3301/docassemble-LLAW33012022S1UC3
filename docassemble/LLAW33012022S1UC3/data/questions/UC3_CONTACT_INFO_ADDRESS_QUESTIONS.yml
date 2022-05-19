@@ -46,7 +46,7 @@ fields:
     show if:
       variable: currently_homeless
       is: 'No'
-  - Subrub: address.city
+  - Suburb: address.city
     show if:
       variable: currently_homeless
       is: 'No'
