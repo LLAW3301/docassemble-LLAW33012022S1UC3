@@ -72,3 +72,14 @@ buttons:
   - Exit: exit
     url: https://www.unitingcommunities.org/service/disability/supportcoordination
 ---
+event: endpoint['eligible']
+question: You might be eligible
+subquestion: |
+
+  It would appear you might be  eligible to receive assistance from Uniting Communities at this time. Please kinldy wait for our response or contact us directly.
+  
+buttons:
+  - Restart: restart
+  - Exit: exit
+    url: https://www.unitingcommunities.org/service/disability/supportcoordination
+---
