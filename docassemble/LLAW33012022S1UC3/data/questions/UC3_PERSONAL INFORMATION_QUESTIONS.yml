@@ -18,9 +18,7 @@ fields:
   - Middle name: applicant.name.middle
     required: False
   - Last name: applicant.name.last
-  - Age: applicant_age
-    datatype: integer
-  - Date of Birth: date_of_birth
+  - Date of Birth: applicant.birthdate
     datatype: date
   - State of Residence: state_of_residence
     default: South Australia
