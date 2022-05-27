@@ -21,6 +21,7 @@ fields:
   - Age: applicant_age
     datatype: integer
   - Date of Birth: date_of_birth
+    datatype: date
   - State of Residence: state_of_residence
     default: South Australia
     choices: 
