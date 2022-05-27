@@ -84,3 +84,11 @@ action buttons:
     color: warning
     icon: sign-out-alt 
 ---
+question: |
+  What is the caption for this file?
+subquestion: |
+  ${ AAT_documents[i].filename }
+fields:
+  - Caption: AAT_documents[i].caption
+    input type: area
+---
