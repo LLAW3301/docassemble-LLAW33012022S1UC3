@@ -20,7 +20,7 @@ code: |
 ---
 # This code block determines applicant_age_ok
 code: |
-  if 18 <= applicant_age < 65:
+  if 18 <= applicant.age_in_years() < 65:
     applicant_age_ok = True
   else:
     applicant_age_ok = False
@@ -87,8 +87,8 @@ subquestion: |
   Do you have that person's consent?             | ${ applicant_concent }
   % endif
   Name    | ${ applicant_salutation } ${ applicant }
-  Age                | ${ applicant_age }
-  Date of Birth  | ${ date_of_birth }
+  Date of Birth  | ${ applicant.birthdate }
+  Age in Years  | ${ applicant.age_in_years() }
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }
@@ -101,7 +101,7 @@ subquestion: |
   What sort of assistance do you need?   | ${ type_of_assistance }
   How did you hear about us?   | ${ how_did_you_hear }
   Phone number   | ${ phone_number }
-  Email   | ${ applicant_email }
+  Email   | ${ applicant.email }
   Are you currently homeless?   | ${ currently_homeless }
   % if currently_homeless == 'No':
   Are you at risk of becoming homeless?   | ${ at_risk_homeless }
