@@ -57,6 +57,9 @@ fields:
   - What is the reason for rejection?: rejection_reason_internal_review
     input type: area
     required: False
+validation code: |
+  if date_revieced_internal_review_report + 90 <= today():
+    raise DAValidationError('Please check that the Internal review request date, you have entered is correct.', field='date_revieced_internal_review_report')
 ---
 question: External Review Details
 subquestion:  |
