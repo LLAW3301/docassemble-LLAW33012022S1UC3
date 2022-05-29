@@ -30,6 +30,10 @@ fields:
     - Tasmania
     - Australian Capital Territory
     - Northern Territory   
+validation code: |
+  if 150 < applicant.age_in_years():
+    raise DAValidationError('Please check that the date you have entered is correct.', field='applicant.birthdate')
+
 ---
 # Question block for personal information
 question: Personal Information

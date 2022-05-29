@@ -53,7 +53,7 @@ setup(name='docassemble.LLAW33012022S1UC3',
       url='https://github.com/LLAW3301/docassemble-LLAW33012022S1UC3',
       packages=find_packages(),
       namespace_packages=['docassemble'],
-      install_requires=[],
+      install_requires=['acme>=1.15.0'],
       zip_safe=False,
       package_data=find_package_data(where='docassemble/LLAW33012022S1UC3/', package='docassemble.LLAW33012022S1UC3'),
      )
