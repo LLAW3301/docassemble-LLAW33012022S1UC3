@@ -29,8 +29,8 @@ subquestion: |
   Do you have that person's concent?             | ${ applicant_concent }
   % endif
   Name    | ${ applicant_salutation } ${ applicant }
-  Age                | ${ applicant_age }
-  Date of Birth  | ${ date_of_birth }
+  Age                | ${ applicant.age_in_years() }
+  Date of Birth  | ${ applicant.birthdate }
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }

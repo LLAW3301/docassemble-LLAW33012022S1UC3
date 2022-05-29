@@ -4,23 +4,23 @@
 objects:
   - endpoint: DADict
 ---
-# Code block that determines intial eligibility based on what user needs assistance with
-# Uniting Communities only able to provide assistance with matters regarding NDIS access request or review of an NDIS access request
-mandatory: True
-code: |
-  if NDIS_assistance == 'Yes':
-    endpoint['eligible']
-  else:
-    endpoint['other_resources']
----
+
 # Code block that sets conditions for inticial eligibity 
 # Age needs to be between 18-65 and they must be a resident of South Australia
 mandatory: True
 code: |
-  if 18 < applicant_age > 65 or state_of_residence != 'South Australia':
+  
+  if 18 < applicant.age_in_years() > 65 or state_of_residence != 'South Australia':
     endpoint['ineligible']
   else:
     endpoint['eligible']
+---
+# Code block that determines intial eligibility based on what user needs assistance with
+# Uniting Communities only able to provide assistance with matters regarding NDIS access request or review of an NDIS access request
+mandatory: True
+code: |
+  if NDIS_assistance != 'Yes':
+    endpoint['other_resources']
 ---
 # Endpoint 'other resources'
 # User will be directed here if they are seeking assistance with a matter unrelated to an NDIS access request/review
@@ -47,15 +47,15 @@ question: You are not eligible
 subquestion: |
 
   It would appear you are not eligible to receive assistance from Uniting Communities at this time. This is because 
-  % if applicant_age < 18 and state_of_residence == 'South Australia':
+  % if applicant.age_in_years() < 18 and state_of_residence == 'South Australia':
   you are under 18 years of age.
-  % elif applicant_age > 65 and state_of_residence == 'South Australia':
+  % elif applicant.age_in_years() > 65 and state_of_residence == 'South Australia':
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013.
-  %elif applicant_age and state_of_residence != 'South Australia':
+  %elif applicant.age_in_years() and state_of_residence != 'South Australia':
   you are not currently a resident of South Australia.
-  % elif  applicant_age < 18 and state_of_residence  != 'South Australia':
+  % elif  applicant.age_in_years() < 18 and state_of_residence  != 'South Australia':
   you are under 18 years of age and are not currently a resident of South Australia. 
-  % elif applicant_age > 65 and state_of_residence != 'South Australia':
+  % elif applicant.age_in_years() > 65 and state_of_residence != 'South Australia':
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia.
   % endif
   
