@@ -24,7 +24,6 @@ content: |
   Are you filling in this application on behalf of someone else?            | ${ who_is_filing }
   Do you have that person's concent?             | ${ applicant_concent }
   Name    | ${ applicant_salutation } ${ applicant }
-  
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }

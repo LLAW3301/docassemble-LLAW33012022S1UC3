@@ -1,4 +1,12 @@
 ---
+mandatory: True
+objects:
+  - UC3logo: DAStaticFile.using(filename='Untitled_logo.png')
+---
+mandatory: True
+code: |
+  set_parts(title='NDIS Review', logo='<img src="' + UC3logo.url_for() + '" style="height: 121px;">')
+---
 # code question for Privacy Policy
 mandatory: True
 question: Privacy Policy
@@ -6,9 +14,12 @@ subquestion: |
   Welcome to the Uniting Communities application for assistance in relation to NDIS access requests. 
   
   ###Privacy Policy###
+  We will handle all personal and sensitive information in a respectful, secure and lawful manner whilst upholding the right to privacy of all concerned. Uniting Communities is committed to meeting our legal obligations under the Privacy Act 1988 (Cth) and the accompanying Australian Privacy Principles (APPs). For more information about how we protect your privacy please visit our privacy policy by clicking on the Privacy Policy button located below
   
   *You must agree to the above terms in order to continue.*
 buttons:
+  - "Privacy Policy": exit
+    url: https://www.unitingcommunities.org/about-us/privacy-policy
   - "I accept and wish to continue": continue
   - " I do not accept and wish to exit": exit 
     url: https://www.unitingcommunities.org/service/disability/supportcoordination
