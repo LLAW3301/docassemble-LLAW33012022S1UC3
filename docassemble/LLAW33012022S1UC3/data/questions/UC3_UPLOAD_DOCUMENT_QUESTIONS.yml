@@ -78,11 +78,12 @@ fields:
     datatype: files
     accept: |
       "image/*, .pdf"
-# action buttons:
-  # - label: Upload Later
-    # action: next_question
-    #color: warning
-    #icon: sign-out-alt 
+    required: False
+action buttons:
+  - label: Upload Later
+    action: next_question
+    color: warning
+    icon: sign-out-alt 
 ---
 question: |
   What is the caption for this file?
