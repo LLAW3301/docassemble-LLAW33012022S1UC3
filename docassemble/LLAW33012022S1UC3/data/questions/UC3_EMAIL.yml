@@ -20,9 +20,9 @@ content: |
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }
-  Is english your first language?   | ${ english_first_language }
+  Is English the primary language that you speak?   | ${ english_first_language }
   % if english_first_language == 'No':
-  What is your first language?   | ${ first_language }
+  What is the primary language that you speak?   | ${ first_language }
   Do you require an interpretor?   | ${ interpretor_required }
   % endif
   What is your primary disability?   | ${ primary_disability }
@@ -35,7 +35,7 @@ content: |
   % elif type_of_assistance == 'Other':
   What other type of assistance do you seeking?   | ${ type_of_assistance_other }
   % endif
-  How did you hear about us?   | ${ how_did_you_hear }
+  Who referred you to Uniting Communities?   | ${ how_did_you_hear }
   Phone number   | ${ phone_number }
   Email   | ${ applicant.email }
   Are you currently homeless?   | ${ currently_homeless }

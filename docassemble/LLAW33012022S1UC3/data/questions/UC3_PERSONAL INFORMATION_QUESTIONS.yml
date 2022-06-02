@@ -30,6 +30,8 @@ fields:
     - Tasmania
     - Australian Capital Territory
     - Northern Territory
+under: |
+  *Note: 'Applicant' refers to the individual who is seeking assistance from Uniting Communities*
 ---
 # Question block for personal information
 question: Personal Information
@@ -74,9 +76,9 @@ fields:
       is: Other
 ---
 # Question block asking how the use heard about uniting communities
-question: How did you hear about Uniting Communities?
+question: Who referred you to Uniting Communities?
 fields:
-  - Please let us know how you heard about us: how_did_you_hear
+  - Please let us know who referred you to Uniting Communities: how_did_you_hear
     datatype: text
     required: False
 ---
