@@ -64,10 +64,10 @@ fields:
   - What is your primary disability: primary_disability
   - What do you need assistance with: type_of_assistance
     choices:
-      - A fresh access request
-      - Internal review of an access request (through the NDIA)
-      - External review of an access request (through the AAT)
-      - Other
+      - A new access request: new_request
+      - Internal review of an access request (through the NDIA): internal_review
+      - External review of an access request (through the AAT): external_review
+      - Other: other
   - What other type of assistance do you seeking: type_of_assistance_other
     show if:
       variable: type_of_assistance

@@ -1,25 +1,32 @@
 ---
+objects:
+  - AAT_documents: DAFileList(there_are_any = False)
+---
 # Question block for uploading/downloading letter of consent
 question: Upload Letter of Consent 
 subquestion:  |
   Please upload a completed **Letter of Consent to Share Information**. PDF and image files accepted. 
   
-   If you do not have a copy of either of these forms, you can download a blank copy below. 
+   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Consent_to_share.pdf')}) 
 fields:
   - Upload: letter_of_consent
     datatype: file
     accept: |
-      "image/*, .pdf"
-attachments:
-  - name: Letter of Consent to Share Information
-    filename: Letter_of_consent_to_share_information_template
-    content: |
-      Letter of Consent to Share Information 
-action buttons:
-  - label: Upload Later
-    action: next_question
-    color: warning
-    icon: sign-out-alt 
+      "image/*, .pdf, application/pdf"
+    required: False
+---
+# Question block for uploading/downloading new access request
+question: Upload New Access Request
+subquestion:  |
+  Please upload a completed **Access Request**. PDF and image files accepted. 
+  
+   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Access_Request_Form.pdf')}) 
+fields:
+  - Upload: new_access_request
+    datatype: file
+    accept: |
+      "image/*, .pdf, application/pdf"
+    required: False
 ---
 # Question block for internal review details
 # Includes legislation
@@ -67,6 +74,9 @@ fields:
     max: ${ today() } 
     required: False
 ---
+question: Have you recieved any documents from the AAT?
+yesno: documents_uploaded
+---
 question: AAT Document Upload
 subquestion:  |
   Please upload any additional documents you have received from the AAT (e.g. directions, listings, or statement of issues.)
@@ -77,13 +87,8 @@ fields:
   - Upload: AAT_documents
     datatype: files
     accept: |
-      "image/*, .pdf"
+      "image/*, .pdf, application/pdf"
     required: False
-action buttons:
-  - label: Upload Later
-    action: next_question
-    color: warning
-    icon: sign-out-alt 
 ---
 question: |
   What is the caption for this file?

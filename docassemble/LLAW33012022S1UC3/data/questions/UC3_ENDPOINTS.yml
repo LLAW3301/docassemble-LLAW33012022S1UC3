@@ -1,8 +1,8 @@
-# The welcome screen/privacy policy and endpoints
+# The endpoints
 ---
-# Objects block for setting endpoints
+# Objects block for setting DAList
 objects:
-  - endpoint: DADict
+  - documents: DAList.using(auto_gather=False)
 ---
 # Code block that determines intial eligibility based on what user needs assistance with
 # Uniting Communities only able to provide assistance with matters regarding NDIS access request or review of an NDIS access request
@@ -12,6 +12,28 @@ mandatory: True
 code: |
   if NDIS_assistance == 'Yes':
     if applicant_age_ok and state_of_residence == 'South Australia':
+      who_is_filing
+      ATSI_background
+      primary_disability
+      how_did_you_hear
+      phone_number
+      currently_homeless
+      centrelink_payment
+      letter_of_consent
+      if type_of_assistance == 'new_request':
+        new_access_request
+        documents.append(new_access_request)
+      elif type_of_assistance == 'internal_review':
+        date_recieved_access_request 
+      elif type_of_assistance == 'external_review':
+        date_recieved_access_request 
+        date_revieced_internal_review_report
+        date_AAT_application
+      
+      if documents_uploaded:
+        AAT_documents
+      else:
+        AAT_documents = []
       eligible
     else:
       ineligible
@@ -72,7 +94,6 @@ buttons:
 # User will be directed to this endpoint if they are seeking assistance with an NDIS access request/review, are between 18-65 and are a resident of SA
 # This is where the final table of answers will be displayed and the list of documents uploaded and those still needing to be uploaded will be shown
 # Where the buttons that allow the information collected to be emailed to the user and UC are
-field: intro_provided
 event: eligible
 question: Thank you for completing the application
 subquestion: |
@@ -98,8 +119,13 @@ subquestion: |
   Do you require an interpretor?   | ${ interpretor_required }
   % endif
   What is your primary disability?   | ${ primary_disability }
-  What sort of assistance do you need?   | ${ type_of_assistance }
-  % if type_of_assistance == 'Other':
+  % if type_of_assistance == 'new_request':
+  What sort of assistance do you need?   | New Access Request
+  % elif type_of_assistance == 'internal_review':
+  What sort of assistance do you need?   | An Internal Review (NDIS)
+  % elif type_of_assistance == 'external_review':
+  What sort of assistance do you need?   | An External Review (AAT)
+  % elif type_of_assistance == 'Other':
   What other type of assistance do you seeking?   | ${ type_of_assistance_other }
   % endif
   How did you hear about us?   | ${ how_did_you_hear }
@@ -115,6 +141,11 @@ subquestion: |
   What is your postal address?   | ${ postaddress.block(show_country=False) }
   % endif
   Are you currently receiving any Centrelink payments   | ${ centrelink_payment }
+  % if type_of_assistance == 'internal_review':
+  What date did you recieve your access request decision?   | ${ date_recieved_access_request }
+  What date did you recieve funding for your plan?   | ${ date_recieved_funding }
+  What is the reason for rejection?   | ${ rejection_reason_access_request }
+  % elif type_of_assistance == 'external_review':
   What date did you recieve your access request decision?   | ${ date_recieved_access_request }
   What date did you recieve funding for your plan?   | ${ date_recieved_funding }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
@@ -128,10 +159,15 @@ subquestion: |
   ${ AAT_document.caption }
   
   % endfor
+  % endif
+  
+  % if email_sent_ok:
+  The e-mail was sent successfully.
+  % else:
+  There was a problem sending the e-mail.
+  % endif
   
   If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
   
-  **Please click on the 'Email to Uniting Communities' Button below before exiting. 
-  
-  You can also email yourself a copy of the information you have entered by clicking on the 'Email to Myself' button next to it.**
+
 ---

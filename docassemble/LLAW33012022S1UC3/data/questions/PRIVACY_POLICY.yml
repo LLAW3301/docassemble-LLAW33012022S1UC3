@@ -5,7 +5,7 @@ objects:
 ---
 mandatory: True
 code: |
-  set_parts(title='NDIS Review', logo='<img src="' + UC3logo.url_for() + '" style="height: 121px;">')
+  set_parts(title='NDIS Review', logo='<img src="' + UC3logo.url_for() + '" style="height: 50px;">')
 ---
 # code question for Privacy Policy
 mandatory: True
