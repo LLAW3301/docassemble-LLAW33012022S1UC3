@@ -7,4 +7,5 @@ include:
   - UC3_PERSONAL INFORMATION_QUESTIONS.yml
   - UC3_UPLOAD_DOCUMENT_QUESTIONS.yml
   - UC3_ENDPOINTS.yml
+  - UC3_Colours.yml
 ---
