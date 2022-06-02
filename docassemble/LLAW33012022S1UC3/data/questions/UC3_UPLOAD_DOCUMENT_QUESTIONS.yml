@@ -78,6 +78,7 @@ fields:
     datatype: files
     accept: |
       "image/*, .pdf"
+    required: False
 action buttons:
   - label: Upload Later
     action: next_question

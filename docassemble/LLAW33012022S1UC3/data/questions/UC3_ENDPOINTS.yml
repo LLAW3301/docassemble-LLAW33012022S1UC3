@@ -50,15 +50,15 @@ question: You are not eligible
 subquestion: |
 
   It would appear you are not eligible to receive assistance from Uniting Communities at this time. This is because 
-  % if applicant_age < 18 and state_of_residence == 'South Australia':
+  % if applicant.age_in_years() < 18 and state_of_residence == 'South Australia':
   you are under 18 years of age.
-  % elif applicant_age > 65 and state_of_residence == 'South Australia':
+  % elif applicant.age_in_years() > 65 and state_of_residence == 'South Australia':
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013.
-  %elif applicant_age and state_of_residence != 'South Australia':
+  %elif applicant.age_in_years() and state_of_residence != 'South Australia':
   you are not currently a resident of South Australia.
-  % elif  applicant_age < 18 and state_of_residence  != 'South Australia':
+  % elif  applicant.age_in_years() < 18 and state_of_residence  != 'South Australia':
   you are under 18 years of age and are not currently a resident of South Australia. 
-  % elif applicant_age > 65 and state_of_residence != 'South Australia':
+  % elif applicant.age_in_years() > 65 and state_of_residence != 'South Australia':
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia.
   % endif
   
@@ -72,6 +72,7 @@ buttons:
 # User will be directed to this endpoint if they are seeking assistance with an NDIS access request/review, are between 18-65 and are a resident of SA
 # This is where the final table of answers will be displayed and the list of documents uploaded and those still needing to be uploaded will be shown
 # Where the buttons that allow the information collected to be emailed to the user and UC are
+field: intro_provided
 event: eligible
 question: Thank you for completing the application
 subquestion: |
@@ -88,7 +89,6 @@ subquestion: |
   % endif
   Name    | ${ applicant_salutation } ${ applicant }
   Date of Birth  | ${ applicant.birthdate }
-  Age in Years  | ${ applicant.age_in_years() }
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }
@@ -99,6 +99,9 @@ subquestion: |
   % endif
   What is your primary disability?   | ${ primary_disability }
   What sort of assistance do you need?   | ${ type_of_assistance }
+  % if type_of_assistance == 'Other':
+  What other type of assistance do you seeking?   | ${ type_of_assistance_other }
+  % endif
   How did you hear about us?   | ${ how_did_you_hear }
   Phone number   | ${ phone_number }
   Email   | ${ applicant.email }

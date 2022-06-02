@@ -61,13 +61,17 @@ fields:
 # Question block for personal information
 question: Personal Information
 fields:
-   - What is your primary disability: primary_disability
-   - What do you need assistance with: type_of_assistance
-     choices:
-       - A fresh access request
-       - Internal review of an access request (through the NDIA)
-       - External review of an access request (through the AAT)
-       - Other
+  - What is your primary disability: primary_disability
+  - What do you need assistance with: type_of_assistance
+    choices:
+      - A fresh access request
+      - Internal review of an access request (through the NDIA)
+      - External review of an access request (through the AAT)
+      - Other
+  - What other type of assistance do you seeking: type_of_assistance_other
+    show if:
+      variable: type_of_assistance
+      is: Other
 ---
 # Question block asking how the use heard about uniting communities
 question: How did you hear about Uniting Communities?
