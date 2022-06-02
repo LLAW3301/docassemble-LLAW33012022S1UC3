@@ -25,7 +25,7 @@ action buttons:
 # Includes legislation
 question: Internal Review Details
 fields:
-  - What date did you receive your access request decision?: date_recieved_access_request 
+  - What date did you receive your decision?: date_recieved_access_request 
     datatype: date
     max: ${ today() }
     required: False
