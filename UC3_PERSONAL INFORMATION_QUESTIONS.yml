@@ -1,0 +1,80 @@
+---
+# Object block that defines applicant
+objects:
+  - applicant: Individual
+---
+# Question block for applicant information
+question: Applicant Information
+fields:
+  - Salutation: applicant_salutation
+    choices:
+      - Mr
+      - Mrs
+      - Miss
+      - Ms
+      - Sir
+      - Madam
+  - First name: applicant.name.first
+  - Middle name: applicant.name.middle
+    required: False
+  - Last name: applicant.name.last
+  - Age: applicant_age
+    datatype: integer
+  - Date of Birth: date_of_birth
+    datatype: date
+  - State of Residence: state_of_residence
+    default: South Australia
+    choices: 
+    - South Australia
+    - Victoria
+    - New South Wales
+    - Western Australia
+    - Tasmania
+    - Australian Capital Territory
+    - Northern Territory
+---
+# Question block for personal information
+question: Personal Information
+fields:
+  - Are you of Aboriginal or Torres Strait Islander origin: ATSI_background
+    datatype: radio
+    choices:
+      - Yes
+      - No
+  - Country of Birth: country_of_birth
+  - Is English your first language: english_first_language
+    datatype: radio
+    choices:
+      - Yes
+      - No
+  - What is your first language: first_language
+    show if:
+      variable: english_first_language
+      is: 'No'
+  - Do you require and interpretor: interpretor_required
+    datatype: radio
+    choices:
+      - Yes
+      - No
+    show if:
+      variable: english_first_language
+      is: 'No'
+---
+# Question block for personal information
+question: Personal Information
+fields:
+   - What is your primary disability: primary_disability
+   - What do you need assistance with: type_of_assistance
+     choices:
+       - New access request
+       - Internal review of an access request (through the NDIA)
+       - External review of an access request (through the AAT)
+       - Other
+---
+# Question block asking how the use heard about uniting communities
+question: How did you hear about Uniting Communities?
+fields:
+  - Please let us know how you heard about us: how_did_you_hear
+    datatype: text
+    required: False
+---
