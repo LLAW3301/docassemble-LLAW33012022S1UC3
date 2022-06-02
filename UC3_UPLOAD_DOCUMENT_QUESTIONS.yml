@@ -1,0 +1,94 @@
+---
+# Question block for uploading/downloading letter of consent
+question: Upload Letter of Consent 
+subquestion:  |
+  Please upload a completed **Letter of Consent to Share Information**. PDF and image files accepted. 
+  
+   If you do not have a copy of either of these forms, you can download a blank copy below. 
+fields:
+  - Upload: letter_of_consent
+    datatype: file
+    accept: |
+      "image/*, .pdf"
+attachments:
+  - name: Letter of Consent to Share Information
+    filename: Letter_of_consent_to_share_information_template
+    content: |
+      Letter of Consent to Share Information 
+action buttons:
+  - label: Upload Later
+    action: next_question
+    color: warning
+    icon: sign-out-alt 
+---
+# Question block for internal review details
+# Includes legislation
+question: Internal Review Details
+fields:
+  - What date did you receive your access request decision?: date_recieved_access_request 
+    datatype: date
+    max: ${ today() }
+    required: False
+  - What date did you receive funding for your plan: date_recieved_funding 
+    datatype: date
+    max: ${ today() }
+    required: False
+  - What is the reason for rejection?: rejection_reason_access_request
+    input type: area
+    required: False
+under: | 
+  Section 100 of the NDIS Act enstablishes that the decision-maker of a reviewable decision must give written notice of the reviewable decision, and of the reasons for the reviewable decision, to each person directly affected by the reviewable decision.
+  
+  Section 34 of the NDIS Act establishes the criteria for what supports are considered "reasonable and necessary" for the NDIS to cover.
+  
+  Section 24 of the NDIS Act establishes the criteria for a person to meet disability requirements.
+  
+  Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
+---
+# Question block for external review details
+question: External Review Details
+subquestion:  |
+  What date did you receive an internal review report?
+fields:
+  - Date: date_revieced_internal_review_report
+    datatype: date
+    max: ${ today() }
+    required: False
+  - What is the reason for rejection?: rejection_reason_internal_review
+    input type: area
+    required: False
+---
+question: External Review Details
+subquestion:  |
+  If you have made an application to the AAT, on what date did you do so?
+fields:
+  - Date: date_AAT_application 
+    datatype: date
+    max: ${ today() } 
+    required: False
+---
+question: AAT Document Upload
+subquestion:  |
+  Please upload any additional documents you have received from the NDIS or the AAT (e.g. Access Not Met Letter, Internal review report, directions, listings, or statement of issues.)
+  
+  PDF and image files accepted 
+  
+fields:
+  - Upload: AAT_documents
+    datatype: files
+    accept: |
+      "image/*, .pdf"
+action buttons:
+  - label: Upload Later
+    action: next_question
+    color: warning
+    icon: sign-out-alt 
+---
+question: |
+  What is the caption for this file?
+subquestion: |
+  ${ AAT_documents[i].filename }
+fields:
+  - Caption: AAT_documents[i].caption
+    input type: area
+---
