@@ -161,13 +161,12 @@ subquestion: |
   % endfor
   % endif
   
+  The above information will be e-mailed to you and Uniting Communities for them to review. Once they have done so, they should be contact with you within a week. If you do not hear back from them by then, or if you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
+  
+  E-mail status:
   % if email_sent_ok:
   The e-mail was sent successfully.
   % else:
   There was a problem sending the e-mail.
   % endif
-  
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
-  
-
 ---

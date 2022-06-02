@@ -42,12 +42,12 @@ fields:
       - Yes
       - No
   - Country of Birth: country_of_birth
-  - Is English your first language: english_first_language
+  - Is English the primary language that you speak: english_first_language
     datatype: radio
     choices:
       - Yes
       - No
-  - What is your first language: first_language
+  - What is the primary language that you speak: first_language
     show if:
       variable: english_first_language
       is: 'No'
