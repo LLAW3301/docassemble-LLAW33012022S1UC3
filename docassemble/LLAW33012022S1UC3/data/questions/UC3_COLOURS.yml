@@ -1,0 +1,15 @@
+---
+objects:
+  - MJFlogo: DAStaticFile.using(filename='Untitled_logo.png')
+---
+features:
+  css: UC3_TEST.css
+  debug: True
+  hide standard menu: False
+---
+initial: True
+code: |
+  MJFlogo_string= '<div class="media"><img src="{}" class="mr-3" height="50"><div class="media-body"></div></div>'.format(MJFlogo.url_for())
+  set_parts(logo=MJFlogo_string)
+---
+ 
