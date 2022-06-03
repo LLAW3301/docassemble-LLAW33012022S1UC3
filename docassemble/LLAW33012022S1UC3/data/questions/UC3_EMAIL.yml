@@ -1,7 +1,9 @@
 ---
+# Code block that sets what is sent in the email and to whom it is sent 
 code: |
-  email_sent_ok = send_email(to=applicant.email,bcc=['UC3EXAMPLE@outlook.com'], template=notification)
+  email_sent_ok = send_email(to=applicant.email,bcc=['UC3EXAMPLE@outlook.com'], template=notification, attachments=documents)
 ---
+# Template of what will be sent in the email 
 template: notification
 subject: |
   Uniting Communitites NDIS Access Request Asisstance Application Information

@@ -3,7 +3,7 @@
 objects:
   - applicant: Individual
 ---
-# Question block for applicant information
+# Question block for applicant information name and DOB
 question: Applicant Information
 fields:
   - Salutation: applicant_salutation
@@ -31,9 +31,9 @@ fields:
     - Australian Capital Territory
     - Northern Territory
 under: |
-  *Note: 'Applicant' refers to the individual who is seeking assistance from Uniting Communities*
+  *Note: Applicant refers to the individual who is seeking assistance from Uniting Communities*
 ---
-# Question block for personal information
+# Question block for personal information ATSI background
 question: Personal Information
 fields:
   - Are you of Aboriginal or Torres Strait Islander origin: ATSI_background
@@ -60,7 +60,7 @@ fields:
       variable: english_first_language
       is: 'No'
 ---
-# Question block for personal information
+# Question block for personal information primary disability and type of assistance
 question: Personal Information
 fields:
   - What is your primary disability: primary_disability
