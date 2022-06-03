@@ -8,8 +8,19 @@ template: notification
 subject: |
   Uniting Communitites NDIS Access Request Asisstance Application Information
 content: |
-  Thank you for completing the Uniting Communitites Asisstance Application. Based on your responses, Uniting Communitites may be able to provide you with assistance in relation to your ${ type_of_assistance }. 
-
+  Thank you for completing the Uniting Communitites Asisstance Application.   Based on your responses, Uniting Communities may be able to provide you with assistance in relation to your NDIS 
+  % if type_of_assistance == 'new_access_request':
+  new access request
+  % elif type_of_assistance == 'internal_review':
+  internal review
+  % elif type_of_assistance == 'external review':
+  external review
+  % elif type_of_assistance == 'other':
+  ${ type_of_assistance_other }
+  % endif
+  
+  The following is a table of the information you have provided. Please read over it to confirm all the details are correct before clicking continue. 
+  
   Question|Your Response
   --------|--------
   Do you need assistance with a matter relating to an NDIS access request or review of an NDIS access request?            | ${ NDIS_assistance }
@@ -31,7 +42,7 @@ content: |
   % if type_of_assistance == 'new_request':
   What sort of assistance do you need?   | New Access Request
   % elif type_of_assistance == 'internal_review':
-  What sort of assistance do you need?   | An Internal Review (NDIS)
+  What sort of assistance do you need?   | An Internal Review (NDIA)
   % elif type_of_assistance == 'external_review':
   What sort of assistance do you need?   | An External Review (AAT)
   % elif type_of_assistance == 'Other':
@@ -43,11 +54,11 @@ content: |
   Are you currently homeless?   | ${ currently_homeless }
   % if currently_homeless == 'No':
   Are you at risk of becoming homeless?   | ${ at_risk_homeless }
-  What is your address   | ${ address.block(show_country=False) }
+  What is your address   | ${ address.block(show_country=False,include_unit=True) }
   Is this also your postal address?   | ${ also_postal_address }
   % endif
   % if currently_homeless == 'No' and also_postal_address == 'No':
-  What is your postal address?   | ${ postaddress.block(show_country=False) }
+  What is your postal address?   | ${ postaddress.block(show_country=False,include_unit=True) }
   % endif
   Are you currently receiving any Centrelink payments   | ${ centrelink_payment }
   % if type_of_assistance == 'internal_review':
