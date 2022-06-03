@@ -1,31 +1,39 @@
+# Code block that sets DAFileList
+---
+objects:
+  - AAT_documents: DAFileList(there_are_any = False)
 ---
 # Question block for uploading/downloading letter of consent
 question: Upload Letter of Consent 
 subquestion:  |
   Please upload a completed **Letter of Consent to Share Information**. PDF and image files accepted. 
   
-   If you do not have a copy of either of these forms, you can download a blank copy below. 
+   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Consent_to_share.pdf')}) 
 fields:
   - Upload: letter_of_consent
     datatype: file
     accept: |
-      "image/*, .pdf"
-attachments:
-  - name: Letter of Consent to Share Information
-    filename: Letter_of_consent_to_share_information_template
-    content: |
-      Letter of Consent to Share Information 
-action buttons:
-  - label: Upload Later
-    action: next_question
-    color: warning
-    icon: sign-out-alt 
+      "image/*, .pdf, application/pdf"
+    required: False
+---
+# Question block for uploading/downloading new access request
+question: Upload New Access Request
+subquestion:  |
+  Please upload a completed **Access Request**. PDF and image files accepted. 
+  
+   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Access_Request_Form.pdf')}) 
+fields:
+  - Upload: new_access_request
+    datatype: file
+    accept: |
+      "image/*, .pdf, application/pdf"
+    required: False
 ---
 # Question block for internal review details
 # Includes legislation
 question: Internal Review Details
 fields:
-  - What date did you receive your access request decision?: date_recieved_access_request 
+  - What date did you receive your decision?: date_recieved_access_request 
     datatype: date
     max: ${ today() }
     required: False
@@ -33,8 +41,13 @@ fields:
     datatype: date
     max: ${ today() }
     required: False
-  - What is the reason for rejection?: rejection_reason_access_request
+  - What was the reason for rejection?: rejection_reason_access_request
     input type: area
+    required: False
+  - Please upload a copy of the decision: copy_of_internal_review_decision
+    datatype: file
+    accept: |
+      "image/*, .pdf, application/pdf"
     required: False
 under: | 
   Section 100 of the NDIS Act enstablishes that the decision-maker of a reviewable decision must give written notice of the reviewable decision, and of the reasons for the reviewable decision, to each person directly affected by the reviewable decision.
@@ -45,7 +58,7 @@ under: |
   
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
 ---
-# Question block for external review details
+# Question block for external review details: internal review report
 question: External Review Details
 subquestion:  |
   What date did you receive an internal review report?
@@ -54,20 +67,34 @@ fields:
     datatype: date
     max: ${ today() }
     required: False
-  - What is the reason for rejection?: rejection_reason_internal_review
+  - What was the reason for rejection?: rejection_reason_internal_review
     input type: area
     required: False
+  - Please upload a copy of your internal review report: copy_of_internal_review_report
+    datatype: file
+    accept: |
+      "image/*, .pdf, application/pdf"
+    required: False
 ---
+# Question block for external review details: application to AAT
 question: External Review Details
 subquestion:  |
-  If you have made an application to the AAT, on what date did you do so?
+  If you have made an application to the AAT for an external review, on what date did you do so?
 fields:
   - Date: date_AAT_application 
     datatype: date
     max: ${ today() } 
     required: False
+  - Please upload a copy of your application to the AAT: copy_of_application_AAT
+    datatype: file
+    accept: |
+      "image/*, .pdf, application/pdf"
+    required: False
 ---
-question: AAT Document Upload
+question: Have you received any other documents from the AAT?
+yesno: documents_uploaded
+---
+question: AAT Other Document Upload
 subquestion:  |
   Please upload any additional documents you have received from the AAT (e.g. directions, listings, or statement of issues.)
   
@@ -77,13 +104,10 @@ fields:
   - Upload: AAT_documents
     datatype: files
     accept: |
-      "image/*, .pdf"
-action buttons:
-  - label: Upload Later
-    action: next_question
-    color: warning
-    icon: sign-out-alt 
+      "image/*, .pdf, application/pdf"
+    required: False
 ---
+# Question block for file caption for additional AAT document upload
 question: |
   What is the caption for this file?
 subquestion: |
@@ -91,4 +115,6 @@ subquestion: |
 fields:
   - Caption: AAT_documents[i].caption
     input type: area
+    help: |
+      This should be the title of the document you are uploading.
 ---

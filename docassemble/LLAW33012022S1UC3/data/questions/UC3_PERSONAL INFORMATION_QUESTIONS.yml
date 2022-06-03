@@ -3,7 +3,7 @@
 objects:
   - applicant: Individual
 ---
-# Question block for applicant information
+# Question block for applicant information name and DOB
 question: Applicant Information
 fields:
   - Salutation: applicant_salutation
@@ -30,8 +30,10 @@ fields:
     - Tasmania
     - Australian Capital Territory
     - Northern Territory
+under: |
+  *Note: Applicant refers to the individual who is seeking assistance from Uniting Communities*
 ---
-# Question block for personal information
+# Question block for personal information ATSI background
 question: Personal Information
 fields:
   - Are you of Aboriginal or Torres Strait Islander origin: ATSI_background
@@ -40,12 +42,12 @@ fields:
       - Yes
       - No
   - Country of Birth: country_of_birth
-  - Is English your first language: english_first_language
+  - Is English the primary language that you speak: english_first_language
     datatype: radio
     choices:
       - Yes
       - No
-  - What is your first language: first_language
+  - What is the primary language that you speak: first_language
     show if:
       variable: english_first_language
       is: 'No'
@@ -58,21 +60,25 @@ fields:
       variable: english_first_language
       is: 'No'
 ---
-# Question block for personal information
+# Question block for personal information primary disability and type of assistance
 question: Personal Information
 fields:
-   - What is your primary disability: primary_disability
-   - What do you need assistance with: type_of_assistance
-     choices:
-       - A fresh access request
-       - Internal review of an access request (through the NDIA)
-       - External review of an access request (through the AAT)
-       - Other
+  - What is your primary disability: primary_disability
+  - What do you need assistance with: type_of_assistance
+    choices:
+      - A new access request: new_request
+      - Internal review of an access request (through the NDIA): internal_review
+      - External review of an access request (through the AAT): external_review
+      - Other: other
+  - What other type of assistance do you seeking: type_of_assistance_other
+    show if:
+      variable: type_of_assistance
+      is: Other
 ---
 # Question block asking how the use heard about uniting communities
-question: How did you hear about Uniting Communities?
+question: Who referred you to Uniting Communities?
 fields:
-  - Please let us know how you heard about us: how_did_you_hear
+  - Please let us know who referred you to Uniting Communities: how_did_you_hear
     datatype: text
     required: False
 ---

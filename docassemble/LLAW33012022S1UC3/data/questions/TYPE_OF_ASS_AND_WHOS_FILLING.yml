@@ -21,7 +21,8 @@ fields:
     choices:
     - Yes
     - No
+    help: You may be asked to provide documentation of their consent later 
     show if: 
       variable: who_is_filing
-      is: 'Yes'
+      is: 'Yes'     
 ---
