@@ -84,4 +84,6 @@ fields:
   - Please let us know who referred you to Uniting Communities: how_did_you_hear
     datatype: text
     required: False
+    help:
+      Tv, UC Website, Word of mouth, Newspaper, Radio, Something else
 ---

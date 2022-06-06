@@ -117,7 +117,9 @@ subquestion: |
   % elif  applicant.age_in_years() < 18 and state_of_residence  != 'South Australia':
   you are under 18 years of age and are not currently a resident of South Australia. 
   % elif applicant.age_in_years() > 65 and state_of_residence != 'South Australia':
-  you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia.
+  you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia. 
+  
+  You may Contact ${ action_button_html("https://www.unitingcommunities.org/service/legal-services/disability-advocacy-service", label="United Communities Legal Centre Disability Advocacy Services", color="primary", size="md") } 
   % endif
   
   If you have any further questions, please contact Unitng Communities on **08 8202 5867** or email us at **das@unitingcommunities.org**.
