@@ -29,22 +29,31 @@ fields:
       "image/*, .pdf, application/pdf"
     required: False
 ---
+#mandatory: true
 # Question block for internal review details
 # Includes legislation
 question: Internal Review Details
 fields:
   - What date did you receive your decision?: date_recieved_access_request 
     datatype: date
-    max: ${ today() }
     required: False
   #- Have you received an extension for your Internal Review Application?: internal_review_extension
     #show if: 
       #code: extension_needed
       #variable: extension_needed
       #is: True
+  - Is the date entered above the original Review Decision Date (Answer no, if the date is maximum extension date for internal review)?: confirm_date_internal_review_decision
+    datatype: radio
+    choices:
+      -  Yes
+      -  No
+  - What was the original date for Internal Review Decision, if the date above is the maximum allowed internal review date from your approved extension request: original_date_recieved_access_request
+    datatype: date
+    show if: 
+      variable: confirm_date_internal_review_decision
+      is: No
   - What date did you receive funding for your plan: date_recieved_funding 
     datatype: date
-    max: ${ today() }
     required: False
   - What was the reason for rejection?: rejection_reason_access_request
     input type: area
@@ -64,7 +73,7 @@ under: |
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
 validation code: |
   if date_difference(date_recieved_access_request, today()).days > 90:
-    raise DAValidationError("It has been more than 90 days since the Internal review decision, and without an extension, we cannot proceeed with review. If you had an extension, please kindly set that as the internal review date instead.")
+    raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the internal review date instead.")
 ---
 # Question block for external review details: internal review report
 question: External Review Details
@@ -85,7 +94,7 @@ fields:
     required: False
 validation code: |
   if date_difference(date_revieced_internal_review_report, today()).days > 60:
-    raise DAValidationError("It has been more than 60 days since the External review decision, and without an extension, we cannot proceeed with review. If you had an extension, please kindly set that as the external review date instead.")
+    raise DAValidationError("It has been more than 60 days since the External review decision, and without an extension, we cannot proceeed with review, you might need help with 'A new access request' instead. If you had an extension, please kindly set that as the internal review date instead.")
 ---
 # Question block for external review details: application to AAT
 question: External Review Details

@@ -50,6 +50,8 @@ code: |
       eligible
     else:
       ineligible
+  else:
+    other_resources
 ---
 # This code block defines applicant_age_ok
 code: |
@@ -70,6 +72,7 @@ subquestion: |
   
   ###List of Alternative Resources/Organisations###
   
+  NDIS Access -https://www.ndis.gov.au/applying-access-ndisAfter getting your access decision -https://www.ndis.gov.au/applying-access-ndis/how-apply/receiving-your-access-decisionInternal review decision -https://www.ndis.gov.au/applying-access-ndis/how-apply/receiving-your-access-decision/internal-review-decisionAAT application -https://www.aat.gov.au/apply-for-a-review/national-disability-insurance-scheme-ndis/how-to-applyLegal Services commission NDIS Help -https://lsc.sa.gov.au/cb_pages/ndis.phpLSC application for NDIS appeals -https://lsc.sa.gov.au/resources/Application%20Form%20for%20NDIS%20Appeals%20Legal%20Services%20December%202019.pdfNDIS Quality and Safeguards Commission Complaints -https://www.ndiscommission.gov.au/about/complaintsFind your Local Area Coordinator (LAC) https://www.ndis.gov.au/contact/locations/-35.0261%2C138.6373/100/11250Adult Safeguarding Unit -https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/about+us/department+for+health+and+wellbeing/office+for+ageing+well/adult+safeguarding+unit/adult+safeguarding+unitLegal Services Commission disability information and legal assistance unit -https://lsc.sa.gov.au/cb_pages/dila.phpLegal services commission (generally) -https://lsc.sa.gov.au/Disability Advocacy Organisations -https://www.afdo.org.au/resource-disability-advocacy-organisations/
 
   If you have any further questions, please contact Unitng Communities on **08 8202 5867** or email us at **das@unitingcommunities.org**.
 buttons:
@@ -164,7 +167,14 @@ subquestion: |
   % endif
   Are you currently receiving any Centrelink payments   | ${ centrelink_payment }
   % if type_of_assistance == 'internal_review':
-  What date did you recieve your access request decision?   | ${ date_recieved_access_request }
+  
+  % if confirm_date_internal_review_decision == 'Yes':
+  What date did you recieve your access request decision?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
+  % elif confirm_date_internal_review_decision == 'No':
+  What is the maximum date extension allowed for your internal review request?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
+  What date did you recieve your original access request decision?   | ${ original_date_recieved_access_request.format('d MMMM YYYY') }
+  % endif
+  
   What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
   % elif type_of_assistance == 'external_review':
