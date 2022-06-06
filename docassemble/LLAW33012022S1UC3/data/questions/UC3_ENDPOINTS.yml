@@ -156,11 +156,11 @@ subquestion: |
   Are you currently homeless?   | ${ currently_homeless }
   % if currently_homeless == 'No':
   Are you at risk of becoming homeless?   | ${ at_risk_homeless }
-  What is your address   | ${ address.block(show_country=False,include_unit=True) }
+  What is your address   | ${ address.block(show_country=False) }
   Is this also your postal address?   | ${ also_postal_address }
   % endif
   % if currently_homeless == 'No' and also_postal_address == 'No':
-  What is your postal address?   | ${ postaddress.block(show_country=False,include_unit=True) }
+  What is your postal address?   | ${ postaddress.block(show_country=False) }
   % endif
   Are you currently receiving any Centrelink payments   | ${ centrelink_payment }
   % if type_of_assistance == 'internal_review':
