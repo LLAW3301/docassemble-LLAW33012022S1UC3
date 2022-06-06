@@ -71,7 +71,7 @@ subquestion: |
   ###List of Alternative Resources/Organisations###
   
 
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
+  If you have any further questions, please contact Unitng Communities on **08 8202 5867** or email us at **das@unitingcommunities.org**.
 buttons:
   - Restart: restart
   - Exit: exit
@@ -96,7 +96,7 @@ subquestion: |
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the National Disability Insurance Scheme Act 2013. In addition to this, you are not currently a resident of South Australia.
   % endif
   
-  If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
+  If you have any further questions, please contact Unitng Communities on **08 8202 5867** or email us at **das@unitingcommunities.org**.
 buttons:
   - Restart: restart
   - Exit: exit
@@ -183,7 +183,7 @@ subquestion: |
   % endfor
   % endif
   
-  The above information will be e-mailed to you and Uniting Communities for them to review. Once they have done so, they should be contact with you within a week. If you do not hear back from them by then, or if you have any further questions, please contact Unitng Communities on **1800 615 677** or email them at **enquiries@unitingcommunities.org**.
+  The above information will be e-mailed to you and Uniting Communities for them to review. Once they have done so, they should be contact with you within a week. If you do not hear back from them by then, or if you have any further questions, please contact Unitng Communities on **08 8202 5867** or email them at **das@unitingcommunities.org**.
   
   E-mail status:
   % if email_sent_ok:
