@@ -6,3 +6,5 @@ A docassemble extension.
 
 Jessica Milen, mile0014@flinders.edu.au 
 Shakara Cartwright, cart0312@flinders.edu.au
+Divyasnhu Gogna, gogn0002@flniders.edu.au
+Kimberly Hoffman, hoff0105@flinders.edu.au

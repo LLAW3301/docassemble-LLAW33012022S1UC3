@@ -22,7 +22,6 @@ code: |
       letter_of_consent
       if letter_of_consent != None:
         documents.append(letter_of_consent)
-      
       if type_of_assistance == 'new_request':
         new_access_request
         if new_access_request != None:
@@ -41,18 +40,16 @@ code: |
         date_AAT_application
         if copy_of_application_AAT != None:
           documents.append(copy_of_application_AAT)
-      
         if documents_uploaded:
           AAT_documents
         else:
           AAT_documents = []
-          
+      elif type_of_assistance == 'other':
+        other_resources
       documents.gathered=True
       eligible
     else:
       ineligible
-  else:
-     other_resources
 ---
 # This code block defines applicant_age_ok
 code: |
@@ -72,6 +69,7 @@ subquestion: |
   Please find below a list of other resources or organisations that may be able to help you:
   
   ###List of Alternative Resources/Organisations###
+  
 
   If you have any further questions, please contact Unitng Communities on **1800 615 677** or email us at **enquiries@unitingcommunities.org**.
 buttons:
@@ -132,7 +130,8 @@ subquestion: |
   Do you have that person's consent?             | ${ applicant_concent }
   % endif
   Name    | ${ applicant_salutation } ${ applicant }
-  Date of Birth  | ${ applicant.birthdate }
+  Age                | ${ applicant.age_in_years() }
+  Date of Birth  | ${ applicant.birthdate.format('d MMMM YYYY') }
   State of residence | ${ state_of_residence } 
   Are you of Aboriginal or Torres Straight Islander decent?   | ${ ATSI_background }
   County of birth   | ${ country_of_birth }
@@ -166,15 +165,15 @@ subquestion: |
   Are you currently receiving any Centrelink payments   | ${ centrelink_payment }
   % if type_of_assistance == 'internal_review':
   What date did you recieve your access request decision?   | ${ date_recieved_access_request }
-  What date did you recieve funding for your plan?   | ${ date_recieved_funding }
+  What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
   % elif type_of_assistance == 'external_review':
-  What date did you recieve your access request decision?   | ${ date_recieved_access_request }
-  What date did you recieve funding for your plan?   | ${ date_recieved_funding }
+  What date did you recieve your access request decision?   | ${ date_recieved_access_request.format('d MMMM YYYY') } }
+  What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') } }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
-  What date did you recieve an internal review report?   | ${ date_revieced_internal_review_report }
+  What date did you recieve an internal review report?   | ${ date_revieced_internal_review_report.format('d MMMM YYYY') } }
   What is the reason for rejection?   | ${ rejection_reason_internal_review }
-  If you have made an application to the AAT for review, on what date did you do so?   | ${ date_AAT_application }
+  If you have made an application to the AAT for review, on whatd date did you do so?   | ${ date_AAT_application.format('d MMMM YYYY') } }
   
   ###List of documents uploaded###
   % for AAT_document in AAT_documents:

@@ -37,6 +37,11 @@ fields:
     datatype: date
     max: ${ today() }
     required: False
+  #- Have you received an extension for your Internal Review Application?: internal_review_extension
+    #show if: 
+      #code: extension_needed
+      #variable: extension_needed
+      #is: True
   - What date did you receive funding for your plan: date_recieved_funding 
     datatype: date
     max: ${ today() }
@@ -57,6 +62,9 @@ under: |
   Section 24 of the NDIS Act establishes the criteria for a person to meet disability requirements.
   
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
+validation code: |
+  if date_difference(date_recieved_access_request, today()).days > 90:
+    raise DAValidationError("It has been more than 90 days since the Internal review decision, and without an extension, we cannot proceeed with review. If you had an extension, please kindly set that as the internal review date instead.")
 ---
 # Question block for external review details: internal review report
 question: External Review Details
@@ -75,6 +83,9 @@ fields:
     accept: |
       "image/*, .pdf, application/pdf"
     required: False
+validation code: |
+  if date_difference(date_revieced_internal_review_report, today()).days > 60:
+    raise DAValidationError("It has been more than 60 days since the External review decision, and without an extension, we cannot proceeed with review. If you had an extension, please kindly set that as the external review date instead.")
 ---
 # Question block for external review details: application to AAT
 question: External Review Details

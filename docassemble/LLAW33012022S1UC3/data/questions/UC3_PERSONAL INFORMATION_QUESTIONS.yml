@@ -32,6 +32,9 @@ fields:
     - Northern Territory
 under: |
   *Note: Applicant refers to the individual who is seeking assistance from Uniting Communities*
+validation code: |
+  if 150 < applicant.age_in_years():
+    raise DAValidationError('Please check that the date of birth you have entered is correct.', field='applicant.birthdate')
 ---
 # Question block for personal information ATSI background
 question: Personal Information

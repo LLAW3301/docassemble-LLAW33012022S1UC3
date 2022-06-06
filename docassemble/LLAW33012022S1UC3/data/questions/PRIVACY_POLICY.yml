@@ -1,7 +1,7 @@
 ---
 mandatory: True
 objects:
-  - UC3logo: DAStaticFile.using(filename='Untitled_logo.png')
+  - UC3logo: DAStaticFile.using(filename='thumbnail_uclc_logo.png')
 ---
 mandatory: True
 code: |
@@ -11,6 +11,7 @@ code: |
 mandatory: True
 question: Privacy Policy
 subquestion: |
+  DISCLAIMER:- THIS IS NOT A LEGAL ADVICE, please refer to a solicitor for legal advice. 
   Welcome to the Uniting Communities application for assistance in relation to NDIS access requests. 
   
   We will handle all personal and sensitive information in a respectful, secure and lawful manner whilst upholding the right to privacy of all concerned. Uniting Communities is committed to meeting our legal obligations under the Privacy Act 1988 (Cth) and the accompanying Australian Privacy Principles (APPs). 
