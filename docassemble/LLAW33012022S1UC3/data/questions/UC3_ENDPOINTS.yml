@@ -188,14 +188,12 @@ subquestion: |
   % endif
   Are you currently receiving any Centrelink payments   | ${ centrelink_payment }
   % if type_of_assistance == 'internal_review':
-  
   % if confirm_date_internal_review_decision == 'Yes':
   What date did you recieve your access request decision?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
   % elif confirm_date_internal_review_decision == 'No':
   What is the maximum date extension allowed for your internal review request?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
   What date did you recieve your original access request decision?   | ${ original_date_recieved_access_request.format('d MMMM YYYY') }
   % endif
-  
   What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
   % elif type_of_assistance == 'external_review':

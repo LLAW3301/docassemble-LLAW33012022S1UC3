@@ -29,26 +29,30 @@ fields:
       "image/*, .pdf, application/pdf"
     required: False
 ---
-#mandatory: true
 # Question block for internal review details
 # Includes legislation
 question: Internal Review Details
 fields:
   - What date did you receive your decision?: date_recieved_access_request 
     datatype: date
+    help: This date must be no more than 90 days from today.
     required: False
   #- Have you received an extension for your Internal Review Application?: internal_review_extension
     #show if: 
       #code: extension_needed
       #variable: extension_needed
       #is: True
-  - Is the date entered above the original Review Decision Date (Answer no, if the date is maximum extension date for internal review)?: confirm_date_internal_review_decision
+  - Is the date entered above the Original Review Decision Date?: confirm_date_internal_review_decision
+    help: 
+      Yes indicates the above date as your Original Review Decision,
+      No indicates above date is the latest approved extension date you had been granted for internal review application)
     datatype: radio
     choices:
       -  Yes
       -  No
   - What was the original date for Internal Review Decision, if the date above is the maximum allowed internal review date from your approved extension request: original_date_recieved_access_request
     datatype: date
+    max: ${ today() }
     show if: 
       variable: confirm_date_internal_review_decision
       is: No
@@ -74,7 +78,10 @@ under: |
 validation code: |
   if date_difference(date_recieved_access_request, today()).days > 90:
     raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the internal review date instead.")
+  if date_difference(date_recieved_access_request, today()).days < 0 and confirm_date_internal_review_decision == 'Yes' :
+    raise DAValidationError("Please kindly check your input date above correctly, You input indicates that you have received your access review decision in future.")
 ---
+
 # Question block for external review details: internal review report
 question: External Review Details
 subquestion:  |
