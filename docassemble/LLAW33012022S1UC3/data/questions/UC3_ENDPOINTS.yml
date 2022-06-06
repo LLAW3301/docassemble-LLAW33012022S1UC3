@@ -68,11 +68,32 @@ subquestion: |
 
   You have indicated that you are seeking aid with a matter unrelated to an NDIS access request or review of an NDIS access request. As such, Uniting Communities will not be able to provide you with assistance at this time. 
   
-  Please find below a list of other resources or organisations that may be able to help you:
+  Please find below a list of resources or other organisations that may be able to help you:
   
-  ###List of Alternative Resources/Organisations###
+  ${ action_button_html("https://www.ndis.gov.au/applying-access-ndis", label="NDIS Access", color="primary", size="md") }
+
+  ${ action_button_html("https://www.ndis.gov.au/applying-access-ndis/how-apply/receiving-your-access-decision", label="After getting your access decision", color="primary", size="md") }
+
+  ${ action_button_html("https://www.ndis.gov.au/applying-access-ndis/how-apply/receiving-your-access-decision/internal-review-decision", label="Internal review decision", color="primary", size="md") }
   
-  NDIS Access -https://www.ndis.gov.au/applying-access-ndisAfter getting your access decision -https://www.ndis.gov.au/applying-access-ndis/how-apply/receiving-your-access-decisionInternal review decision -https://www.ndis.gov.au/applying-access-ndis/how-apply/receiving-your-access-decision/internal-review-decisionAAT application -https://www.aat.gov.au/apply-for-a-review/national-disability-insurance-scheme-ndis/how-to-applyLegal Services commission NDIS Help -https://lsc.sa.gov.au/cb_pages/ndis.phpLSC application for NDIS appeals -https://lsc.sa.gov.au/resources/Application%20Form%20for%20NDIS%20Appeals%20Legal%20Services%20December%202019.pdfNDIS Quality and Safeguards Commission Complaints -https://www.ndiscommission.gov.au/about/complaintsFind your Local Area Coordinator (LAC) https://www.ndis.gov.au/contact/locations/-35.0261%2C138.6373/100/11250Adult Safeguarding Unit -https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/about+us/department+for+health+and+wellbeing/office+for+ageing+well/adult+safeguarding+unit/adult+safeguarding+unitLegal Services Commission disability information and legal assistance unit -https://lsc.sa.gov.au/cb_pages/dila.phpLegal services commission (generally) -https://lsc.sa.gov.au/Disability Advocacy Organisations -https://www.afdo.org.au/resource-disability-advocacy-organisations/
+  ${ action_button_html("https://www.aat.gov.au/apply-for-a-review/national-disability-insurance-scheme-ndis/how-to-apply", label="AAT application", color="primary", size="md") }
+  
+  ${ action_button_html("https://lsc.sa.gov.au/cb_pages/ndis.php", label="Legal Services commission NDIS Help", color="primary", size="md") }
+  
+  ${ action_button_html("https://lsc.sa.gov.au/resources/Application%20Form%20for%20NDIS%20Appeals%20Legal%20Services%20December%202019.pdf", label="LSC application for NDIS appeals", color="primary", size="md") }
+  
+  ${ action_button_html("https://www.ndiscommission.gov.au/about/complaints", label="NDIS Quality and Safeguards Commission Complaints", color="primary", size="md") }
+
+  ${ action_button_html("https://www.ndis.gov.au/contact/locations/-35.0261%2C138.6373/100/11250", label="Find your Local Area Coordinator (LAC)", color="primary", size="md") }
+
+  ${ action_button_html("https://www.sahealth.sa.gov.au/wps/wcm/connect/public+content/sa+health+internet/about+us/department+for+health+and+wellbeing/office+for+ageing+well/adult+safeguarding+unit/adult+safeguarding+unit", label="Adult Safeguarding Unit", color="primary", size="md") }
+
+  ${ action_button_html("https://lsc.sa.gov.au/cb_pages/dila.php", label="Legal Services Commission disability information and legal assistance unit", color="primary", size="md") }
+
+  ${ action_button_html("https://lsc.sa.gov.au/", label="Legal services commission", color="primary", size="md") }
+
+  ${ action_button_html("https://www.afdo.org.au/resource-disability-advocacy-organisations/", label="Disability Advocacy Organisations", color="primary", size="md") }
+
 
   If you have any further questions, please contact Unitng Communities on **08 8202 5867** or email us at **das@unitingcommunities.org**.
 buttons:
