@@ -45,7 +45,7 @@ fields:
   - Is the date entered above the Original Review Decision Date?: confirm_date_internal_review_decision
     help: 
       Yes indicates the above date as your Original Review Decision,
-      No indicates above date is the latest approved extension date you had been granted for internal review application)
+      No indicates above date is the last approved extension date you had been granted for internal review application)
     datatype: radio
     choices:
       -  Yes
@@ -77,7 +77,7 @@ under: |
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
 validation code: |
   if date_difference(date_recieved_access_request, today()).days > 90:
-    raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the internal review date instead.")
+    raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the date above instead.")
   if date_difference(date_recieved_access_request, today()).days < 0 and confirm_date_internal_review_decision == 'Yes' :
     raise DAValidationError("Please kindly check your input date above correctly, You input indicates that you have received your access review decision in future.")
 ---
@@ -85,12 +85,27 @@ validation code: |
 # Question block for external review details: internal review report
 question: External Review Details
 subquestion:  |
-  What date did you receive an internal review report?
+  What date did you receive your review decision?
 fields:
-  - Date: date_revieced_internal_review_report
+  - What date did you receive the decision? : date_revieced_internal_review_report
+    datatype: date
+#    max: ${ today() }
+    help: This date must be no more than 28 days from today.
+    required: False
+  - Is the date entered above the Original Review Decision Date?: confirm_date_revieced_internal_review_report
+    help: 
+      Yes indicates the above date as your Original Review Decision,
+      No indicates above date is the last approved extension date you had been granted for external review application)
+    datatype: radio
+    choices:
+      - Yes
+      - No
+  - What was the original date for Review Decision, if the date above is the maximum allowed external review application date from your approved extension request: original_date_revieced_internal_review_report
     datatype: date
     max: ${ today() }
-    required: False
+    show if: 
+      variable: confirm_date_revieced_internal_review_report
+      is: No
   - What was the reason for rejection?: rejection_reason_internal_review
     input type: area
     required: False
@@ -99,9 +114,12 @@ fields:
     accept: |
       "image/*, .pdf, application/pdf"
     required: False
+    
 validation code: |
-  if date_difference(date_revieced_internal_review_report, today()).days > 60:
-    raise DAValidationError("It has been more than 60 days since the External review decision, and without an extension, we cannot proceeed with review, you might need help with 'A new access request' instead. If you had an extension, please kindly set that as the internal review date instead.")
+  if date_difference(date_revieced_internal_review_report, today()).days > 28:
+    raise DAValidationError("It has been more than 28 days since the review decision, and without an approved extension for external review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the date above instead.")
+  if date_difference(date_revieced_internal_review_report, today()).days < 0 and confirm_date_revieced_internal_review_report == 'Yes' :
+    raise DAValidationError("Please kindly check your input date above correctly, You input indicates that you have received your access review decision in future.")
 ---
 # Question block for external review details: application to AAT
 question: External Review Details

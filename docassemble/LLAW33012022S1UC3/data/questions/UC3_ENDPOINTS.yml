@@ -191,18 +191,23 @@ subquestion: |
   % if confirm_date_internal_review_decision == 'Yes':
   What date did you recieve your access request decision?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
   % elif confirm_date_internal_review_decision == 'No':
-  What is the maximum date extension allowed for your internal review request?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
+  What is the maximum date extension allowed for your internal review request from your approved extension?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
   What date did you recieve your original access request decision?   | ${ original_date_recieved_access_request.format('d MMMM YYYY') }
   % endif
   What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
   % elif type_of_assistance == 'external_review':
-  What date did you recieve your access request decision?   | ${ date_recieved_access_request.format('d MMMM YYYY') } }
-  What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') } }
+  % if confirm_date_revieced_internal_review_report == 'Yes':
+  What date did you receive your request decision?   | ${ date_revieced_internal_review_report.format('d MMMM YYYY') }
+  % elif confirm_date_revieced_internal_review_report == 'No':
+  What is the maximum date allowed for your external review request from your approved extension?   | ${ date_revieced_internal_review_report.format('d MMMM YYYY') } 
+  What date did you recieve your original access request decision?   | ${ original_date_revieced_internal_review_report.format('d MMMM YYYY') }
+  % endif
+  What date did you recieve your access request decision?   | ${ date_recieved_access_request.format('d MMMM YYYY') }
+  What date did you recieve funding for your plan?   | ${ date_recieved_funding.format('d MMMM YYYY') }
   What is the reason for rejection?   | ${ rejection_reason_access_request }
-  What date did you recieve an internal review report?   | ${ date_revieced_internal_review_report.format('d MMMM YYYY') } }
   What is the reason for rejection?   | ${ rejection_reason_internal_review }
-  If you have made an application to the AAT for review, on whatd date did you do so?   | ${ date_AAT_application.format('d MMMM YYYY') } }
+  If you have made an application to the AAT for review, on whatd date did you do so?   | ${ date_AAT_application.format('d MMMM YYYY') }
   
   ###List of documents uploaded###
   % for AAT_document in AAT_documents:
