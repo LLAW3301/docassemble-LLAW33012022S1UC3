@@ -10,9 +10,9 @@ objects:
 # Age needs to be between 18-65 and they must be a resident of South Australia
 mandatory: True
 code: |
+  who_is_filing
   if NDIS_assistance == 'Yes':
     if applicant_age_ok and state_of_residence == 'South Australia':
-      who_is_filing
       ATSI_background
       primary_disability
       how_did_you_hear
