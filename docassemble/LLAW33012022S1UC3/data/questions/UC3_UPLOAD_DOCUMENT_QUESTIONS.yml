@@ -36,7 +36,7 @@ fields:
   - What date did you receive your decision?: date_recieved_access_request 
     datatype: date
     help: This date must be no more than 90 days from today.
-    required: False
+    #required: False
   #- Have you received an extension for your Internal Review Application?: internal_review_extension
     #show if: 
       #code: extension_needed

@@ -23,5 +23,9 @@ subquestion: |
 buttons:
   - "I accept and wish to continue": continue
   - " I do not accept and wish to exit": exit 
-    url: https://www.unitingcommunities.org/service/disability/supportcoordination
+    url: https://www.unitingcommunities.org/
+    
+under: |
+  This app has been developed in conjunction with Flinders University in collaboration with United Communities.
+
 ---
