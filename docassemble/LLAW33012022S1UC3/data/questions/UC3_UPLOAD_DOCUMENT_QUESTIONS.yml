@@ -6,9 +6,9 @@ objects:
 # Question block for uploading/downloading letter of consent
 question: Upload Letter of Consent 
 subquestion:  |
-  Please upload a completed **Letter of Consent to Share Information**. PDF and image files accepted. 
+  Please upload a completed **Letter of Consent to Share Information**. This form refers to allowing your information to be stored. This is not a form for applying on another person's behalf.
   
-   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Consent_to_share.pdf')}) 
+   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Consent_to_share.pdf')}). PDF and image files accepted. If you are unable to complete this during the application process, we will be able to assist you at a later date.
 fields:
   - Upload: letter_of_consent
     datatype: file
@@ -21,7 +21,7 @@ question: Upload New Access Request
 subquestion:  |
   Please upload a completed **Access Request**. PDF and image files accepted. 
   
-   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Access_Request_Form.pdf')}) 
+   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Access_Request_Form.pdf')}).
 fields:
   - Upload: new_access_request
     datatype: file
@@ -50,13 +50,13 @@ fields:
     choices:
       -  Yes
       -  No
-  - What was the original date for Internal Review Decision, if the date above is the maximum allowed internal review date from your approved extension request: original_date_recieved_access_request
+  - What was the original date for Internal Review Decision? If the date above is the maximum allowed internal review date from your approved extension request: original_date_recieved_access_request
     datatype: date
     max: ${ today() }
     show if: 
       variable: confirm_date_internal_review_decision
       is: No
-  - What date did you receive funding for your plan: date_recieved_funding 
+  - What date did you receive funding for your plan?: date_recieved_funding 
     datatype: date
     required: False
   - What was the reason for rejection?: rejection_reason_access_request
@@ -77,9 +77,9 @@ under: |
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
 validation code: |
   if date_difference(date_recieved_access_request, today()).days > 90:
-    raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the date above instead.")
+    raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review. You might need help with a new access request instead. If you had an extension, please set that as the date above instead.")
   if date_difference(date_recieved_access_request, today()).days < 0 and confirm_date_internal_review_decision == 'Yes' :
-    raise DAValidationError("Please kindly check your input date above correctly, You input indicates that you have received your access review decision in future.")
+    raise DAValidationError("Please check your input date above correctly, your input indicates that you have received your access review decision in future.")
 ---
 
 # Question block for external review details: internal review report
@@ -100,7 +100,7 @@ fields:
     choices:
       - Yes
       - No
-  - What was the original date for Review Decision, if the date above is the maximum allowed external review application date from your approved extension request: original_date_revieced_internal_review_report
+  - What was the original date for Review Decision? If the date above is the maximum allowed external review application date from your approved extension request: original_date_revieced_internal_review_report
     datatype: date
     max: ${ today() }
     show if: 
@@ -117,9 +117,9 @@ fields:
     
 validation code: |
   if date_difference(date_revieced_internal_review_report, today()).days > 28:
-    raise DAValidationError("It has been more than 28 days since the review decision, and without an approved extension for external review, we cannot proceeed with review, you might need help with A new access request instead. If you had an extension, please kindly set that as the date above instead.")
+    raise DAValidationError("It has been more than 28 days since the review decision, and without an approved extension for external review, we cannot proceeed with review. You might need help with a new access request instead. If you had an extension, please set that as the date above instead.")
   if date_difference(date_revieced_internal_review_report, today()).days < 0 and confirm_date_revieced_internal_review_report == 'Yes' :
-    raise DAValidationError("Please kindly check your input date above correctly, You input indicates that you have received your access review decision in future.")
+    raise DAValidationError("Please check your input date above correctly, You input indicates that you have received your access review decision in future.")
 ---
 # Question block for external review details: application to AAT
 question: External Review Details

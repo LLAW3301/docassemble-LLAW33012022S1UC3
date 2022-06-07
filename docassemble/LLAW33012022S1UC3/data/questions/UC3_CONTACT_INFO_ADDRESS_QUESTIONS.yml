@@ -22,12 +22,12 @@ objects:
 # Question block for homlessness status and address/postal address
 question: Address
 fields:
-  - Are you currently homeless: currently_homeless
+  - Are you currently homeless?: currently_homeless
     datatype: radio
     choices:
       - Yes
       - No
-  - Are you at risk of becoming homeless: at_risk_homeless
+  - Are you at risk of becoming homeless?: at_risk_homeless
     datatype: radio
     choices:
       - Yes
@@ -70,7 +70,7 @@ fields:
     show if:
       variable: currently_homeless
       is: 'No'
-  - Is the address you just entered also your postal address: also_postal_address
+  - Is the address you entered also your postal address?: also_postal_address
     input type: radio
     choices:
       - Yes
@@ -118,7 +118,7 @@ fields:
 # Question block for centrelink payments
 question: Government Support Payments
 fields:
-  - Are you currently receiving any Centrelink payments: centrelink_payment
+  - Are you currently receiving any Centrelink payments?: centrelink_payment
     datatype: radio
     choices:
       - Yes

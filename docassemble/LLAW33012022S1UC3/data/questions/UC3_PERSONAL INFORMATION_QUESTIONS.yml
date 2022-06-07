@@ -39,22 +39,22 @@ validation code: |
 # Question block for personal information ATSI background
 question: Personal Information
 fields:
-  - Are you of Aboriginal or Torres Strait Islander origin: ATSI_background
+  - Are you of Aboriginal or Torres Strait Islander origin?: ATSI_background
     datatype: radio
     choices:
       - Yes
       - No
   - Country of Birth: country_of_birth
-  - Is English the primary language that you speak: english_first_language
+  - Is English the primary language that you speak?: english_first_language
     datatype: radio
     choices:
       - Yes
       - No
-  - What is the primary language that you speak: first_language
+  - What is the primary language that you speak at home?: first_language
     show if:
       variable: english_first_language
       is: 'No'
-  - Do you require and interpretor: interpretor_required
+  - Do you require and interpretor?: interpretor_required
     datatype: radio
     choices:
       - Yes
@@ -66,14 +66,14 @@ fields:
 # Question block for personal information primary disability and type of assistance
 question: Personal Information
 fields:
-  - What is your primary disability: primary_disability
-  - What do you need assistance with: type_of_assistance
+  - What is your primary disability?: primary_disability
+  - What do you need assistance with?: type_of_assistance
     choices:
-      - A new access request: new_request
-      - Internal review of an access request (through the NDIA): internal_review
-      - External review of an access request (through the AAT): external_review
+      - An access request for the NDIS: new_request
+      - An internal review of an access request: internal_review
+      - An external review of an access request: external_review
       - Other: other
-  - What other type of assistance do you seeking: type_of_assistance_other
+  - What other type of assistance do you seeking?: type_of_assistance_other
     show if:
       variable: type_of_assistance
       is: Other
@@ -81,9 +81,9 @@ fields:
 # Question block asking how the use heard about uniting communities
 question: Who referred you to Uniting Communities?
 fields:
-  - Please let us know who referred you to Uniting Communities: how_did_you_hear
+  - How did you hear about Uniting Communities?: how_did_you_hear
     datatype: text
     required: False
     help:
-      Tv, UC Website, Word of mouth, Newspaper, Radio, Something else
+      Television, UC Website, Word of mouth, Newspaper, Radio, Something else
 ---

@@ -2,21 +2,22 @@
 # Question block for Type of Assistance
 question: Type of Assistance
 fields:
-  - Are you seeking assistance with a matter relating to an NDIS access request, or review: NDIS_assistance
+  - Are you seeking assistance with a matter relating to an NDIS access request, or review?: NDIS_assistance
     datatype: radio
     choices:
       - Yes
       - No
+
 ---
 #Question block for Whos is filling application
 question: Who is filling in the application
 fields:
-  - Are you filling in this form on behalf of someone else: who_is_filing
+  - Are you filling in this form on behalf of someone else?: who_is_filing
     datatype: radio
     choices:
       - Yes
       - No
-  - Do you have their consent: applicant_concent
+  - Do you have their consent?: applicant_concent
     datatype: radio
     choices:
     - Yes
