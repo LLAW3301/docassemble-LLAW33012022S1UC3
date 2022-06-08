@@ -15,9 +15,11 @@ fields:
       - Sir
       - Madam
   - First name: applicant.name.first
+    default: John  
   - Middle name: applicant.name.middle
     required: False
   - Last name: applicant.name.last
+    default: Smith
   - Date of Birth: applicant.birthdate
     datatype: date
   - State of Residence: state_of_residence
