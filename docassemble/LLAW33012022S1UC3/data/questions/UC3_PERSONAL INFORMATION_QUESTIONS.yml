@@ -54,7 +54,7 @@ fields:
     show if:
       variable: english_first_language
       is: 'No'
-  - Do you require and interpretor?: interpretor_required
+  - Do you require an interpreter?: interpretor_required
     datatype: radio
     choices:
       - Yes
@@ -70,10 +70,10 @@ fields:
   - What do you need assistance with?: type_of_assistance
     choices:
       - An access request for the NDIS: new_request
-      - An internal review of an access request: internal_review
-      - An external review of an access request: external_review
+      - An internal review of a decision: internal_review
+      - An external review of an internal review decision: external_review
       - Other: other
-  - What other type of assistance do you seeking?: type_of_assistance_other
+  - What other type of assistance are you seeking?: type_of_assistance_other
     show if:
       variable: type_of_assistance
       is: Other

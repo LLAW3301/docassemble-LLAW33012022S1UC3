@@ -10,7 +10,7 @@ fields:
 
 ---
 #Question block for Whos is filling application
-question: Who is filling in the application
+question: Who is filling in the application?
 fields:
   - Are you filling in this form on behalf of someone else?: who_is_filing
     datatype: radio
@@ -22,7 +22,7 @@ fields:
     choices:
     - Yes
     - No
-    help: You may be asked to provide documentation of their consent later 
+    help: You may be asked to provide documentation of their consent later. 
     show if: 
       variable: who_is_filing
       is: 'Yes'     

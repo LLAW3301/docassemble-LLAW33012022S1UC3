@@ -17,11 +17,11 @@ fields:
     required: False
 ---
 # Question block for uploading/downloading new access request
-question: Upload New Access Request
+question: Upload NDIS Access Request
 subquestion:  |
-  Please upload a completed **Access Request**. PDF and image files accepted. 
+  Please upload a completed **Access Request**. PDF and image files accepted. If you have applied for the NDIS before, please upload your previous access form. 
   
-   If you do not have a copy of this form, you can download a blank copy [here](${ url_of('Access_Request_Form.pdf')}).
+   If you have never applied to the NDIS before, please press continue to advance with the application process.
 fields:
   - Upload: new_access_request
     datatype: file
@@ -33,7 +33,7 @@ fields:
 # Includes legislation
 question: Internal Review Details
 fields:
-  - What date did you receive your decision?: date_recieved_access_request 
+  - What date is on your decision plan or your NDIS plan?: date_recieved_access_request 
     datatype: date
     help: This date must be no more than 90 days from today.
     #required: False
@@ -77,17 +77,17 @@ under: |
   Section 25 of the NDIS Act establishes the criteria for a person to meet the early intervention requirements.
 validation code: |
   if date_difference(date_recieved_access_request, today()).days > 90:
-    raise DAValidationError("It has been more than 90 days since the original access review decision, and without a approved extension for internal review, we cannot proceeed with review. You might need help with a new access request instead. If you had an extension, please set that as the date above instead.")
+    raise DAValidationError("It has been more than 90 days since the decision was made. Please give us a call to discuss your options on 08 8202 5867")
   if date_difference(date_recieved_access_request, today()).days < 0 and confirm_date_internal_review_decision == 'Yes' :
     raise DAValidationError("Please check your input date above correctly, your input indicates that you have received your access review decision in future.")
 ---
 
-# Question block for external review details: internal review report
+# Question block for external review details
 question: External Review Details
 subquestion:  |
   What date did you receive your review decision?
 fields:
-  - What date did you receive the decision? : date_revieced_internal_review_report
+  - What date is on your internal review decision letter? : date_revieced_internal_review_report
     datatype: date
 #    max: ${ today() }
     help: This date must be no more than 28 days from today.
@@ -106,10 +106,7 @@ fields:
     show if: 
       variable: confirm_date_revieced_internal_review_report
       is: No
-  - What was the reason for rejection?: rejection_reason_internal_review
-    input type: area
-    required: False
-  - Please upload a copy of your internal review report: copy_of_internal_review_report
+  - Please upload a copy of your internal review decision letter: copy_of_internal_review_report
     datatype: file
     accept: |
       "image/*, .pdf, application/pdf"
@@ -117,14 +114,14 @@ fields:
     
 validation code: |
   if date_difference(date_revieced_internal_review_report, today()).days > 28:
-    raise DAValidationError("It has been more than 28 days since the review decision, and without an approved extension for external review, we cannot proceeed with review. You might need help with a new access request instead. If you had an extension, please set that as the date above instead.")
+    raise DAValidationError("It has been more than 28 days since the review decision. Please contact us for further options on 08 8202 5867. Alternatively, please contact the AAT for a further extension.")
   if date_difference(date_revieced_internal_review_report, today()).days < 0 and confirm_date_revieced_internal_review_report == 'Yes' :
     raise DAValidationError("Please check your input date above correctly, You input indicates that you have received your access review decision in future.")
 ---
 # Question block for external review details: application to AAT
 question: External Review Details
 subquestion:  |
-  If you have made an application to the AAT for an external review, on what date did you do so?
+  If you have made an application to the AAT for an external review, on what date did you do so? If you have not made an application, please press continue to proceed with the application. Please remember that you have **28 days to make an application**.
 fields:
   - Date: date_AAT_application 
     datatype: date
