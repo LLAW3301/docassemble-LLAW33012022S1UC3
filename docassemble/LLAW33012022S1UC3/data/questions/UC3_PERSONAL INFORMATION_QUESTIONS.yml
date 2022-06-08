@@ -47,6 +47,7 @@ fields:
       - Yes
       - No
   - Country of Birth: country_of_birth
+    default: Australia
   - Is English the primary language that you speak?: english_first_language
     datatype: radio
     choices:
@@ -69,6 +70,7 @@ fields:
 question: Personal Information
 fields:
   - What is your primary disability?: primary_disability
+    default: Hearing aid
   - What do you need assistance with?: type_of_assistance
     choices:
       - An access request for the NDIS: new_request
@@ -85,6 +87,7 @@ question: Who referred you to Uniting Communities?
 fields:
   - How did you hear about Uniting Communities?: how_did_you_hear
     datatype: text
+    default: Google
     required: False
     help:
       Television, UC Website, Word of mouth, Newspaper, Radio, Something else
