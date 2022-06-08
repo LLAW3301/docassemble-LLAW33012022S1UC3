@@ -102,7 +102,7 @@ buttons:
 # Endpoint 'ineligible'
 # User will be directed here if they are not between 18-65 and if they live outside of South Australia
 event: ineligible
-question: You are not eligible
+question: You may not be eligible
 subquestion: |
 
   It would appear may not be able to receive assistance from Uniting Communities Law Centre Disability Advocacy Service at this time. This is because 
