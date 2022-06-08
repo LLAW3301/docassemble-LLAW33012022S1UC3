@@ -6,9 +6,11 @@ question: Contact Information
 fields:
   - Phone Number: phone_number
     datatype: integer
+    default: 0412345678
     help: Please enter phone number without any spaces.
   - Email: applicant.email
     datatype: email
+    default: example@email.com
     hint: example@gmail.com
 ---
 # Object block that sets defintion of address.
@@ -42,11 +44,13 @@ fields:
       is: 'No'
   - Unit: address.unit
     datatype: integer
+    default: 1
     required: False
     show if:
       variable: currently_homeless
       is: 'No'
   - Suburb: address.city
+    default: Adelaide
     show if:
       variable: currently_homeless
       is: 'No'
@@ -66,6 +70,7 @@ fields:
       is: 'No'
   - Postal Code: address.postal_code
     datatype: integer
+    default: 5000
     required: False
     show if:
       variable: currently_homeless
