@@ -110,7 +110,9 @@ subquestion: |
   you are under 18 years of age. We would advise you to contact us at your earliest convenience for assistance. 
   % elif applicant.age_in_years() > 65 and state_of_residence == 'South Australia':
   you are over 65 and, as such, do not meet the age requirement set out under s22 of the *National Disability Insurance Scheme Act* 2013.
-  You may Contact ${ action_button_html("https://www.unitingcommunities.org/service/legal-services/disability-advocacy-service", label="United Communities Legal Centre Disability Advocacy Services", color="primary", size="md") }
+  You may Contact 
+  
+  ${ action_button_html("https://www.unitingcommunities.org/service/legal-services/disability-advocacy-service", label="United Communities Legal Centre Disability Advocacy Services", color="primary", size="md") }
   %elif applicant.age_in_years() and state_of_residence != 'South Australia':
   you are not currently a resident of South Australia.
   % elif  applicant.age_in_years() < 18 and state_of_residence  != 'South Australia':
